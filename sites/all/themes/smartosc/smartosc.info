@@ -1,0 +1,62 @@
+name = Smartosc
+description = "This is a theme of the Smart OSC site"
+core = 7.x
+
+;Stylesheets
+stylesheets[all][] = front-end/css/plugin/bootstrap.min.css
+stylesheets[all][] = front-end/css/plugin/owl.carousel.min.css
+stylesheets[all][] = front-end/css/style.css
+
+;Scripts
+;scripts[] = front-end/js/plugin/bootstrap.min.js
+
+scripts[] = front-end/js/plugin/owl.carousel.min.js
+scripts[] = front-end/js/plugin/jquery.hoverdir.js
+scripts[] = front-end/js/plugin/jquery.fullPage.min.js
+scripts[] = front-end/js/plugin/jquery.slimscroll.min.js
+scripts[] = front-end/js/plugin/jquery.youtubebackground.js
+
+scripts[] = front-end/js/select-menu.js
+scripts[] = front-end/js/script.js
+
+
+;Regions
+regions[page_top]       = Page Top
+regions[page_bottom]    = Page Bottom
+
+regions[fixed_header]   = Fixed header
+regions[header]         = Header
+regions[branding]       = Branding
+
+regions[highlighted]    = Highlighted
+regions[content_top]    = Content Top
+regions[content]        = Content
+regions[content_bottom] = Content Bottom
+regions[description]    = Description
+regions[info]           = Information
+regions[bottom]         = Bottom
+
+regions[sidebar_first] 	= Sidebar first
+regions[sidebar_second] = Sidebar second
+
+regions[footer]         = Footer
+regions[footer_first] 	= Footer first
+regions[footer_second] 	= Footer second
+regions[footer_third] 	= Footer third
+
+;Settings
+settings[toggle_logo] = '1'
+settings[toggle_name] = '0'
+settings[toggle_slogan] = '0'
+settings[toggle_node_user_picture] = '1'
+settings[toggle_comment_user_picture] = '1'
+settings[toggle_comment_user_verification] = '1'
+settings[toggle_favicon] = '1'
+settings[toggle_fvicon] = '1'
+settings[toggle_main_menu] = '0'
+settings[toggle_secondary_menu] = '0'
+settings[default_logo] = '1'
+settings[default_favicon] = '1'
+
+settings[preloader_type] = '1'
+settings[news_description] = '<h2>Insights</h2>'

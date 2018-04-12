@@ -1,0 +1,445 @@
+<?php
+require_once dirname(__FILE__) . '/includes/form_frontend/contact.form.inc';
+require_once dirname(__FILE__) . '/includes/form_frontend/newsletter_insights.form.inc';
+require_once dirname(__FILE__) . '/includes/form_frontend/question-contact.form.inc';
+require_once dirname(__FILE__) . '/includes/form_frontend/career.form.inc';
+require_once dirname(__FILE__) . '/includes/form_frontend/career-apply.form.inc';
+require_once dirname(__FILE__) . '/includes/form_frontend/career_opportunities.form.inc';
+//require_once dirname(__FILE__) . '/includes/form_frontend/auto_alias.inc';
+/**
+ * Implements hook_menu().
+ */
+function general_menu(){
+  $items = array();
+  $items['page-404'] = array(
+    'title' => 'Not Found',
+    'page callback' => 'page_blank_pcb',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/config/system/smartosc-config'] = array(
+    'title'             => 'SmarstOSC Info',
+    'description'       => 'SmarstOSC Configuration.',
+    'page callback'     => 'drupal_get_form',
+    'page arguments'    => array('system_smartosc_settings'),
+    'access arguments'  => array('access administration pages'),
+    'file'              => 'includes/form_backend/form.admin.inc',
+    'weight' => -15,
+  );
+  return $items;
+}
+function page_blank_pcb() { return ''; }
+
+/**
+ * implement hook_block_info()
+ */
+function general_block_info() {
+  $blocks['career_news_form']['info']   = t('Career Newsletter Form');
+  $blocks['career_news_form']['cache']  = DRUPAL_NO_CACHE;
+
+  $blocks['content_career_job_count']['info']   = t('Content Career Job: term count');
+  $blocks['content_career_job_count']['cache']  = DRUPAL_NO_CACHE;
+
+  $blocks['content_case_study_pager']['info']   = t('Content Case Study detail: pager next prev');
+  $blocks['content_case_study_pager']['cache']  = DRUPAL_NO_CACHE;
+
+  $blocks['news_letter_dotmailer_form']['info']   = t('Newsletter Dotmailer');
+  $blocks['news_letter_dotmailer_form']['cache']  = DRUPAL_NO_CACHE;
+
+  $blocks['contact_questions_form']['info']   = t('Contact Question Form');
+  $blocks['contact_questions_form']['cache']  = DRUPAL_NO_CACHE;
+
+  /* Block form default */
+  if (module_exists('contact')) {
+    $blocks['contact_form_block'] = array(
+      'info' => t('Block Form Contact: Contact Form Page'),
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+  $blocks['user_register_block'] = array(
+    'info' => t('Block Form Register: User registration form'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['user_password_request_block'] = array(
+    'info' => t('Block Form Request Password: Request new password form'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+/**
+ * Implement hook_block_view()
+ * @param: string $delta
+ */
+function general_block_view($delta = '') {
+
+	$block = array();
+	switch ($delta) {
+    case 'career_news_form':
+      $block['subject'] = t('Sign up for career news');
+      $block['content'] = theme('content_form',  array('form' => drupal_get_form('general_career_new_form')));
+      break;
+
+    case 'content_career_job_count':
+      $data = career::getCareerRecent();
+      $block['subject'] = t('Career Department');
+      $block['content'] = theme('content_career_job_count', array('data' => $data));
+      break;
+    case 'content_case_study_pager':
+			$portfoio_pager['pre'] = portfolio::getPreCaseStudy();
+			$portfoio_pager['next'] = portfolio::getNextCaseStudy();
+			$portfoio_pager['rand'] = portfolio::getRandomCaseStudy();
+			$block['subject'] = t('Case Study Pager');
+			$block['content'] = theme('content_case_study_pager', array('data' => $portfoio_pager));
+			break;
+
+
+    case 'news_letter_dotmailer_form':
+      if(!isset($_COOKIE['cookie_email'])) {
+        $block['content'] = theme('content_form', array('form' => drupal_get_form('news_letter_dotmailer_form')));
+      }
+      break;
+    case 'contact_questions_form':
+      $block['subject'] = t('Have any questions? Get in touch today');
+      $block['content'] = theme('content_form',  array('form' => drupal_get_form('general_questions_contact_form')));
+      break;
+
+		/* Block Form default */
+    case 'contact_form_block':
+      if (module_exists('contact')) {
+        $block['subject'] = t('Have any questions? Get in touch today.');
+        if (!flood_is_allowed('contact', variable_get('contact_hourly_threshold', 5))) {
+          $content = t("You cannot send more than %number messages per hour. Please try again later.", array('%number' => variable_get('contact_hourly_threshold', 3)));
+        }
+        else {
+          module_load_include('inc', 'contact', 'contact.pages');
+          $content = drupal_get_form('contact_site_form');
+        }
+        $block['subject'] = t('Contact');
+        $block['content']['form'] = $content;
+      }
+      break;
+    case 'user_register_block':
+      global $user;
+      if (!$user->uid && variable_get('user_register', 1)) { // Don't display the form to logged in users or if registration is disabled
+        $block['subject'] = t('Create new account');
+        $block['content']['form'] = drupal_get_form('user_register_form');
+        return $block;
+      }
+      break;
+    case 'user_password_request_block':
+      module_load_include('inc', 'user', 'user.pages');
+      $block['subject'] = t('Request new password');
+      $block['content']['form'] = drupal_get_form('user_pass');
+      break;
+	}
+	return $block;
+}
+
+/**
+ * implement hook_theme()
+ */
+function general_theme() {
+	$path = drupal_get_path('module', 'general').'/themes/';
+	return array(
+      'content_form' => array(
+        'variables' => array('form' => null),
+        'template'  => 'content_form',
+        'path' => $path,
+      ),
+
+			'content_career_job_count' => array(
+					'variables' => array('data' => null),
+					'template'  => 'content_career_job_count',
+					'path' => $path,
+			),
+      'content_case_study_pager' => array(
+        'variables' => array('data' => null),
+        'template'  => 'content_case_study_pager',
+        'path' => $path,
+      ),
+	);
+}
+
+/**
+ *  Implements Hook_form_alter()
+ */
+function general_form_alter(&$form, &$form_state, $form_id) {
+  /* disable CKEDITOR in Block */
+  if ($form_id == 'block_admin_configure' || $form_id == 'block_add_block_form') {
+    $form['settings']['body_field']['body']['#pre_render'] = array();
+  }
+  /* disable CKEDITOR in Block Translate i18n */
+  if ($form_id == 'i18n_string_translate_page_form') {
+    foreach($form['strings']['all'] as $key => $value) {
+      if($value['#type'] != "textarea") {
+        $form['strings']['all'][$key]['#pre_render'] = array();
+      }
+    }
+  }
+  if ($form_id == 'html_page_node_form' || $form_id == 'event_page_node_form'  || $form_id == 'webform_node_form') {
+    //$form['body']['#type'] = 'textarea';
+    $form['body'][LANGUAGE_NONE][0]['#wysiwyg'] = FALSE;
+  }
+
+  /* Redirect Webform */
+  if (stristr($form_id, "webform_client_form")) {
+    //$nid = $form['#node']->nid;
+    // add the ajax properties to the submit button
+    if(!empty($form['#node']->webform['block'])) {
+      $form['#submit'] = array('webform_client_form_pages', 'block_webform_client_form_submit');
+    }
+  }
+}
+
+/**
+ * Fix redirect & messages of Module Webform 7.x-4 Available as block
+ */
+function block_webform_client_form_submit($form, &$form_state) {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  module_load_include('inc', 'webform', 'includes/webform.components');
+  global $user;
+
+  if (empty($form_state['save_draft']) && empty($form_state['webform_completed'])) {
+    return;
+  }
+
+  $node = $form['#node'];
+  $sid = $form_state['values']['details']['sid'] ? (int) $form_state['values']['details']['sid'] : NULL;
+
+  // Check if user is submitting as a draft.
+  $is_draft = (int) !empty($form_state['save_draft']);
+
+  // To maintain time and user information, load the existing submission.
+  // If a draft is deleted while a user is working on completing it, $sid will
+  // exist, but webform_get_submission() will not find the draft. So, make a new
+  // submission.
+  if ($sid && $submission = webform_get_submission($node->webform['nid'], $sid)) {
+    // Store original data on object for use in update hook.
+    $submission->original = clone $submission;
+
+    // Merge with new submission data. The + operator maintains numeric keys.
+    // This maintains existing data with just-submitted data when a user resumes
+    // a submission previously saved as a draft. Remove any existing data on
+    // this and previous pages. If components are hidden, they may be in the
+    // $submission->data but absent entirely from $new_data.
+    $page_map = webform_get_conditional_sorter($node)->getPageMap();
+    for ($page_nr = 1; $page_nr <= $form_state['webform']['page_num']; $page_nr++) {
+      $submission->data = array_diff_key($submission->data, $page_map[$page_nr]);
+    }
+    $submission->data = webform_submission_data($node, $form_state['values']['submitted']) + $submission->data;
+  }
+  else {
+    // Create a new submission object.
+    $submission = webform_submission_create($node, $user, $form_state);
+    // Since this is a new submission, a new sid is needed.
+    $sid = NULL;
+  }
+
+  // Save draft state, and for drafts, save the current page (if clicking next)
+  // or the previous page (if not) as the last valid page.
+  $submission->is_draft = $is_draft;
+  $submission->highest_valid_page = 0;
+  if ($is_draft) {
+    $submission->highest_valid_page = end($form_state['clicked_button']['#parents']) == 'next' && $form_state['values']['op'] != '__AUTOSAVE__'
+      ? $form_state['webform']['page_num']
+      : $form_state['webform']['page_num'] - 1;
+  }
+
+  // If there is no data to be saved (such as on a multipage form with no fields
+  // on the first page), process no further. Submissions with no data cannot
+  // be loaded from the database as efficiently, so we don't save them at all.
+  if (empty($submission->data)) {
+    return;
+  }
+
+  // Save the submission to the database.
+  if (!$sid) {
+    // No sid was found thus insert it in the dataabase.
+    $form_state['values']['details']['sid'] = $sid = webform_submission_insert($node, $submission);
+    $form_state['values']['details']['is_new'] = TRUE;
+
+    // Save the new details in storage. When ajax calls for file upload/remove,
+    // $form_state['values']['details'] is missing. This allows the proper
+    // submission to be retrieved in webform_client_form. See #2562703.
+    $form_state['storage']['details'] = $form_state['values']['details'];
+
+    // Set a cookie including the server's submission time. The cookie expires
+    // in the length of the interval plus a day to compensate for timezones.
+    $tracking_mode = webform_variable_get('webform_tracking_mode');
+    if ($tracking_mode === 'cookie' || $tracking_mode === 'strict') {
+      $cookie_name = 'webform-' . $node->nid;
+      $time = REQUEST_TIME;
+      $params = session_get_cookie_params();
+      setcookie($cookie_name . '[' . $time . ']', $time, $time + $node->webform['submit_interval'] + 86400, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    }
+
+    // Save session information about this submission for anonymous users,
+    // allowing them to access or edit their submissions.
+    if (!$user->uid && user_access('access own webform submissions')) {
+      $_SESSION['webform_submission'][$sid] = $node->nid;
+    }
+  }
+  else {
+    // Sid was found thus update the existing sid in the database.
+    webform_submission_update($node, $submission);
+    $form_state['values']['details']['is_new'] = FALSE;
+  }
+
+  // Check if this form is sending an email.
+  if (!$is_draft && !$form_state['values']['details']['finished']) {
+    drupal_static_reset('webform_get_submission');
+    $submission = webform_get_submission($node->webform['nid'], $sid);
+    webform_submission_send_mail($node, $submission);
+  }
+
+  // Strip out empty tags added by WYSIWYG editors if needed.
+  $message = strlen(trim(strip_tags($node->webform['confirmation']))) > 0;
+
+  // Check confirmation and redirect_url fields.
+  $redirect = NULL;
+  $redirect_url = trim($node->webform['redirect_url']);
+  if (isset($form['actions']['draft']['#value']) && $form_state['values']['op'] == $form['actions']['draft']['#value']) {
+    $message = t('Submission saved. You may return to this form later and it will restore the current values.');
+  }
+  elseif ($is_draft) {
+    // No redirect needed. No confirmation message needed.
+    $message = FALSE;
+  }
+  elseif (!empty($form_state['values']['details']['finished'])) {
+    $message = t('Submission updated.');
+    $redirect = "node/{$node->nid}/submission/$sid";
+  }
+  elseif (!empty($node->webform['confirmation_block'])) {
+    $message = FALSE;
+    // Webform was submitted in a block and the confirmation message is to be
+    // displayed in the block.
+    $_SESSION['webform_confirmation'][$node->nid] = array(
+      'sid' => $sid,
+      'confirmation_page' => $redirect_url == '<confirmation>',
+    );
+    drupal_page_is_cacheable(FALSE);
+  }
+  if ($redirect_url == '<none>') {
+    // No redirect needed. Show a confirmatin message if there is one.
+  }
+  elseif ($redirect_url == '<confirmation>') {
+    // No confirmation message needed because it will be shown on the
+    // confirmation page.
+    $message = FALSE;
+    $query = array('sid' => $sid);
+    if ((int) $user->uid === 0) {
+      $query['token'] = webform_get_submission_access_token($submission);
+    }
+    $redirect = array('node/' . $node->nid . '/done', array('query' => $query));
+  }
+  else {
+    // Clean up the redirect URL, filter it for tokens and detect external
+    // domains. If the redirect is to an external URL, then don't show the
+    // confirmation message.
+    $redirect = webform_replace_url_tokens($redirect_url, $node, $submission);
+    if ($redirect[1]['#webform_external']) {
+      $message = FALSE;
+    }
+  }
+
+  // Show a message if manually set.
+  if (is_string($message)) {
+    drupal_set_message($message);
+  }
+  // If redirecting and we have a confirmation message, show it as a message.
+  elseif ($message) {
+    drupal_set_message(webform_replace_tokens($node->webform['confirmation'], $node, $submission, NULL, $node->webform['confirmation_format']));
+  }
+
+  $form_state['redirect'] = $redirect;
+}
+function general_block_view_alter(&$data, $block) {
+  //Fixed Alert Error in block
+  $webform_blocks = webform_variable_get('webform_blocks');
+  $delta = $block->delta;
+  if (isset($data['content']['webform'])) {
+    $settings = isset($webform_blocks[$delta]) ? $webform_blocks[$delta] : array();
+    $settings += array(
+      'display' => 'form',
+      'pages_block' => 1,
+      'confirmation_block' => 0,
+    );
+
+    if ($settings['confirmation_block']) {
+      $messages_override = drupal_get_messages();
+      if(!empty($messages_override)) {
+        /* Copy smartosc_status_messages style */
+        $output = '';
+        $status_heading = array(
+          'status' => t('Status message'),
+          'error' => t('Error message'),
+          'warning' => t('Warning message'),
+        );
+        $status_class = array(
+          'status' => 'success',
+          'error' => 'danger',
+          'warning' => 'warning',
+        );
+        foreach ($messages_override as $type => $messages) {
+          $class = (isset($status_class[$type])) ? ' alert-' . $status_class[$type] : '';
+          $output .= '<div class="messages-content">';
+          $output .= "<div class=\"alert align-left" . $class . "\">\n";
+          if (!empty($status_heading[$type])) {
+            $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
+          }
+          if (count($messages) > 1) {
+            $output .= " <ul class=\"list-unstyled\">\n";
+            foreach ($messages as $message) {
+              $output .= '  <li>' . $message . "</li>\n";
+            }
+            $output .= " </ul>\n";
+          } else {
+            $output .= $messages[0];
+          }
+          $output .= "</div>\n";
+          $output .= "</div>\n";
+        }
+        /* End smartosc_status_messages style */
+
+        $content = $data['content'];
+        $data['content'] = array(
+          'confirmation_message' => array(
+            '#markup' => $output,
+          ),
+          'webform_view' => $content,
+        );
+      }
+    }
+
+    //if (form_get_errors() && $settings['confirmation_block']) {
+    //    $messages_override = form_get_errors();
+    //  /* Copy smartosc_status_messages style */
+    //    $output = '<div class="messages-content">';
+    //    $output .= "<div class=\"alert align-left alert-danger\">\n";
+    //    $output .= "<h2 class=\"element-invisible\">Error message</h2>\n";
+    //    $output .= "<ul class=\"list-unstyled\">\n";
+    //    foreach ($messages_override as $type => $messages)
+    //      $output .= "<li>" . $messages . "</li>\n";
+    //    $output .= " </ul>\n";
+    //    $output .= "</div>\n";
+    //    $output .= "</div>\n";
+    //  /* End smartosc_status_messages style */
+    //
+    //  $data['content']['confirmation_message'] = array(
+    //      '#markup' => $output,
+    //      '#weight' => -1,
+    //    );
+    //}
+  }
+}
+/**
+ * hook_preprocess_page
+ * Attach form to node or page
+ */
+//function general_preprocess_page(&$vars) {
+//  $vars['node']->form_apply_job = drupal_get_form('general_career_apply_job_form');
+//}
+function general_preprocess_node(&$vars) {
+  $vars['form_apply_job'] = drupal_get_form('general_career_apply_job_form');
+  $vars['form_faqs_article'] = drupal_get_form('general_questions_contact_form');
+}

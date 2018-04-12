@@ -1,0 +1,166 @@
+body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: $dark;
+  font-family: $OpenSansFontFamily;
+  font-weight: $OpenSansRegular;
+}
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  margin: 0 0 $gutter;
+  font-family: $MontserratFontFamily;
+  font-weight: $MontserratMedium;
+  color: $black;
+}
+a:hover, a:focus, a:active{
+  color: $blue;
+  outline: none;
+  text-decoration: none;
+}
+p {
+  margin: 0 0 $gutter;
+  padding: 0
+}
+img {
+  height: auto;
+  max-width: 100%;
+}
+.display-none{
+  display: none;
+}
+.inline-middle{
+  display: inline-block;
+  vertical-align: middle;
+}
+.flex-box{
+  display: flex;
+}
+.align-center{
+  text-align: center;
+}
+.align-left{
+  text-align: left;
+}
+.align-right{
+  text-align: right;
+}
+.direction-left{
+  direction: ltr;
+}
+.direction-right{
+  direction: rtl;
+}
+.table-cell{
+  display: table;
+}
+.cell-middle{
+  display: table-cell;
+  vertical-align: middle;
+}
+.cell-top{
+  display: table-cell;
+  vertical-align: top;
+}
+@include mobi-only {
+  .line-responsive{
+    display: inline-block;
+  }
+  .not-responsive{
+    display: block;
+  }
+}
+
+.over-hidden{
+  overflow: hidden;
+}
+
+
+// Color
+.color-orange-gray{
+  color: $orangeGrayTwo;
+}
+.color-orange{
+  color: $orangeLightFive;
+}
+.color-red{
+  color: $redFour;
+}
+.color-gray{
+  color: $orangeGrayOne;
+}
+.color-blue{
+  color: $blueNine;
+}
+.color-blue-light{
+  color: $blueLightOne;
+}
+
+// padding & margin
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+.pt-30 {
+  padding-top: 30px;
+}
+.pb-30 {
+  padding-bottom: 30px;
+}
+.pb-50 {
+  padding-bottom: 50px;
+}
+.pt-100 {
+  padding-top: 100px;
+}
+.pb-100 {
+  padding-bottom: 100px;
+}
+.pt-150 {
+  padding-bottom: 100px;
+}
+.pb-150 {
+  padding-bottom: 150px;
+}
+.pt-200 {
+  padding-bottom: 200px;
+}
+.pb-200 {
+  padding-bottom: 200px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.mt-100 {
+  margin-top: 100px;
+}
+.mb-100 {
+  margin-bottom: 100px;
+}
+.mt-150 {
+  margin-bottom: 100px;
+}
+.mb-150 {
+  margin-bottom: 150px;
+}
+.mt-200 {
+  margin-bottom: 200px;
+}
+.mb-200 {
+  margin-bottom: 200px;
+}

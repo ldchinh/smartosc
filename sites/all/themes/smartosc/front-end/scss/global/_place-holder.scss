@@ -1,0 +1,244 @@
+/* Place Holder */
+
+//.transition-all,
+%transition-all {
+  @include transition(all .3s linear);
+}
+
+//Section home
+//%style-section2 {
+//  background: $grayLightTwo;
+//  color: #000;
+//}
+
+// News Detail Tags
+%tag-item {
+  @include transition(none);
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  font-size: 12px;
+  line-height: 22px;
+  color: #555;
+  background: #eee;
+  padding: 0 10px;
+  border: none;
+  @include border-radius(0 4px 4px 0);
+  z-index: 10;
+  &:before {
+    content: ' ';
+    width: 17px;
+    height: 18px;
+    background: #eee;
+    position: absolute;
+    left: -9px;
+    top: 2px;
+    @include transform(rotate(45deg));
+    @include border-radius(4px);
+    z-index: 1;
+  }
+  &:after {
+    content: ' ';
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    @include border-radius(50%);
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 8px;
+    left: -1px;
+    z-index: 9999;
+  }
+  &:hover {
+    background: #000;
+    color: #fff;
+    &:before {
+      background: #000;
+    }
+    &:after {
+      border-color: #000;
+    }
+  }
+}
+
+//.icon-rounded-corner,
+%icon-rounded-corner {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  [class*="osc-icon-"],
+  [class^="osc-icon-"] {
+    @include transition(all 0.2s ease 0s);
+    @include box-shadow(0 0 0 2px #000 inset);
+    @include border-radius(50%);
+    height: 100px;
+    font-size: 37px;
+    text-indent: -9999px;
+    position: relative;
+    display: block;
+    width: 100%;
+    color: #000;
+    &:before {
+      text-indent: 0;
+      width: 100%;
+      height: 100%;
+      line-height: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      //background: transparent;
+      //text-align: center;
+    }
+    &:after {
+      @include opacity(0);
+      @include transition(all 0.2s ease 0s);
+      @include transform(scale(1.3, 1.3));
+      @include border-radius(50%);
+      background: transparent;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      content: " ";
+      text-indent: -9999px;
+    }
+  }
+}
+//.icon-rounded-corner-hover
+%icon-rounded-corner-hover {
+  [class*="osc-icon-"],
+  [class^="osc-icon-"] {
+    color: #fff;
+    background-color: #000;
+    @include box-shadow(none);
+    &:after {
+      background: #000;
+      @include opacity(1);
+      @include transform(scale(1,1));
+    }
+  }
+}
+//.pixel-pattern-backgrounds,
+%pixel-pattern-backgrounds {
+  @include pixel-pattern-background(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+}
+
+%container {
+  width: 100%;
+  padding: 0 $gutter;
+  margin: 0 auto;
+  @include desktop {
+    max-width: 970px;
+    width: 970px;
+  }
+  @include wide-screen {
+    max-width: 1170px;
+    width: 1170px;
+  }
+}
+
+//img.grayscale
+%grayscale {
+  @include grayscale;
+  @include transition(all .3s ease);
+  &:hover,
+  &.disabled {
+    @include grayscale-disable;
+    @include transition(all .3s ease);
+  }
+}
+
+%grayscaledisabled {
+  @include grayscale-disable;
+  @include transition(all .3s ease);
+}
+
+//.title-solid-line
+%title-solid-line {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  span {
+    display: inline-block;
+    text-align: center;
+    padding: 0 15px;
+    width: auto;
+    max-width: 70%;
+    background: #fff;
+    position: relative;
+    z-index: 3;
+  }
+  &:after,
+  &:before {
+    content: " ";
+    float: left;
+    position: absolute;
+    width: 40%;
+    left: 10%;
+    top: 50%;
+    margin: -1px 0 0 0;
+    z-index: 2;
+    height: 2px;
+    overflow: hidden;
+    text-indent: -99999px;
+    background: #000;
+  }
+  &:before {
+    left: auto;
+    right: 10%;
+  }
+  @include tablet {
+    span {
+      padding: 0 25px;
+    }
+  }
+  @include desktop {
+    span {
+      padding: 0 35px;
+    }
+    &:after {
+      width: 35%;
+      left: 15%;
+    }
+    &:before {
+      width: 35%;
+      right: 15%;
+    }
+  }
+}
+
+%title-solid-line-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: Center;
+  &:before,
+  &:after {
+    content: "";
+    width: 10%;
+    z-index: 2;
+    height: 2px;
+    background: #000;
+  }
+  &:before {
+    margin-right: 5%;
+    margin-left: 3%;
+  }
+  &:after{
+    margin-left: 5%;
+    margin-right: 3%;
+  }
+  @include desktop {
+    &:before {
+      margin-right: 2%;
+    }
+    &:after {
+      margin-left: 2%;
+    }
+  }
+}

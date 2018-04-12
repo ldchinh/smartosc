@@ -1,0 +1,9 @@
+name = Block Option
+description = "Providers animation effect when blocks appears by ChinhLC"
+core = 7.x
+version = 7.x-1.0
+package = LC Develop
+
+dependencies[] = libraries
+
+;configure = admin/structure/block/animate

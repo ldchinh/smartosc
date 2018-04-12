@@ -1,0 +1,298 @@
+<?php
+/** Config add JS & CSS for all page in list **/
+/////* Implement hook_menu() */
+//  function dp_block_option_menu() {
+//    $items = array();
+//    $items['admin/structure/block/animate'] = array(
+//        'title' => t('Settings Animation'),
+//        'page callback' => 'drupal_get_form',
+//        'page arguments' => array('dp_block_option_admin_settings'),
+//        'access arguments' => array('administer site configuration'),
+//        'weight' => 10,
+//        'type' => MENU_NORMAL_ITEM,
+//    );
+//    return $items;
+//  }
+/////* page arguments */
+//  function dp_block_option_admin_settings() {
+//    $form['dp_block_option_pages_init_action'] = array(
+//        '#type' => 'radios',
+//        '#title' => t('Enable animate on specific pages '),
+//        '#options' => array(
+//            'page_enable' => t('Load only on the listed pages.'),
+//            'page_disable' => t('Load on every page except the listed pages.')
+//        ),
+//        '#default_value' => variable_get('dp_block_option_pages_init_action', 'page_disable'),
+//    );
+//    $form['dp_block_option_pages_list'] = array(
+//        '#type' => 'textarea',
+//        '#title' => t('Pages'),
+//        '#description' => t('List one page per line as Drupal paths.  The * character is a wildcard.  Example paths are "node/add/page" and "node/add/*".  Use <front> to match the front page.'),
+//        '#default_value' => variable_get('dp_block_option_pages_list','')
+//    );
+//    return system_settings_form($form);
+//  }
+/////* Return TRUE if current path is disabled for animate */
+//  function dp_block_option_exclude_these_paths() {
+//    $action = variable_get('dp_block_option_pages_init_action', 'page_disable');
+//    $page_list = variable_get('dp_block_option_pages_list', '');
+//
+//    if (!empty($page_list)) {
+//      // Retrieve Drupal alias for the current path (if exists).
+//      $alias = drupal_get_path_alias($_GET['q']);
+//      if (drupal_match_path($_GET['q'], $page_list) || drupal_match_path($alias, $page_list)) {
+//        return ($action == 'page_disable' ? 1 : 0);
+//      }
+//    }
+//    return ($action == 'page_disable' ? 0 : 1);
+//  }
+/////* Implement hook_init() */
+//  function dp_block_option_init() {
+//    if (dp_block_option_exclude_these_paths() != 1) {
+//      $module_path = drupal_get_path('module', 'dp_block_option');
+//      $library = libraries_get_libraries();
+//      if (isset($library['appear'])) {
+//        $path = $library['appear'];
+//        drupal_add_js($path . '/jquery.appear.js');
+//      }else{
+//        drupal_add_js($module_path . '/js/jquery.appear.js');
+//      }
+//      if (isset($library['stellar'])) {
+//        $path = $library['stellar'];
+//        drupal_add_js($path . '/jquery.stellar.min.js');
+//      }else{
+//        drupal_add_js($module_path . '/js/jquery.stellar.min.js');
+//      }
+//      drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/iscroll.js');
+//      drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/custom_stellar.js');
+//      drupal_add_js($module_path . '/js/script.js');
+//      drupal_add_css($module_path . '/css/animate.css');
+//    }
+//  }
+
+/*
+ * Implement hook_form_alter()
+ */
+function dp_block_option_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'block_admin_configure' || $form_id == 'block_add_block_form') {
+    $form['drupal_block_settings'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Block Settings',
+        '#weight' => 0,
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+    );
+    $form['drupal_block_settings']['option_animate'] = array(
+        '#type' => 'select',
+        '#weight' => 0,
+        '#title' => t('Appears animate'),
+        '#options' => _effects_animations(),
+        '#default_value' => _option_variable_get($form['module']['#value'], $form['delta']['#value'], 'option_animate'),
+    );
+    $form['drupal_block_settings']['option_animate_duration'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Duration'),
+      '#size' => 10,
+      '#field_suffix' => 'second(s)',
+      '#default_value' => _option_variable_get($form['module']['#value'], $form['delta']['#value'], 'option_animate_duration'),
+      '#element_validate' => array('_validate_decimal'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="option_animate"]' => array('!value' => 'none'),
+        ),
+      ),
+    );
+
+    $form['drupal_block_settings']['dp_block_option'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Background Image',
+      '#weight' => 1,
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['drupal_block_settings']['dp_block_option']['option_background_image'] = array(
+        '#tree' => TRUE,
+        '#title' => t('Background image'),
+        '#type' => 'media',
+        '#description' => t('The uploaded image will be displayed on the page unless it is marked as "removed".'),
+        '#default_value' => _option_variable_get($form['module']['#value'], $form['delta']['#value'], 'option_background_image'),
+        '#media_options' => array(
+            'global' => array(
+                'types' => array(
+                    'image' => 'image',
+                ),
+                'schemes' => array(
+                    'public' => 'public',
+                ),
+                'file_extensions' => 'png gif jpg jpeg',
+                'max_filesize' => '1 MB',
+                'uri_scheme' => 'public',
+                'file_directory' => 'media-block',
+            ),
+        ),
+    );
+    $form['drupal_block_settings']['dp_block_option']['option_background_type'] = array(
+        '#type' => 'select',
+        '#title' => t('Background type'),
+        '#options' => array('default' => 'Default', 'parallax' => 'Parallax'),
+        '#default_value' => _option_variable_get($form['module']['#value'], $form['delta']['#value'], 'option_background_type'),
+    );
+    $form['drupal_block_settings']['dp_block_option']['option_background_parallax_ratio'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Parallax Ratio'),
+      '#description' => t('The ratio is relative to the natural scroll speed, so a ratio of 0.5 would cause the element to scroll at half-speed, a ratio of 1 would have no effect'),
+      '#size' => 20,
+      '#default_value' => _option_variable_get($form['module']['#value'], $form['delta']['#value'], 'option_background_parallax_ratio'),
+      '#element_validate' => array('_validate_decimal'),'#states' => array(
+        'visible' => array(
+          ':input[name="option_background_type"]' => array('value' => 'parallax'),
+        ),
+      )
+    );
+    $form['#submit'][] = 'dp_block_option_block_configure_form_submit';
+  }
+}
+
+function _validate_decimal($element,&$form_state,$form) {
+  $value = $element['#value'];
+  if ($value != '' && !is_numeric($value)) {
+    form_error($element,t('This field needs to be a numeric value'));
+  }
+}
+
+function dp_block_option_block_configure_form_submit($form, $form_state) {
+  $values = $form_state['values'];
+  if ($values['option_animate']) {
+    _option_variable_set($values['module'], $values['delta'], 'option_animate', $values['option_animate']);
+  } else {
+    _option_variable_set($values['module'], $values['delta'], 'option_animate', NULL);
+  }
+  if ($values['option_animate_duration']) {
+    _option_variable_set($values['module'], $values['delta'], 'option_animate_duration', $values['option_animate_duration']);
+  } else {
+    _option_variable_set($values['module'], $values['delta'], 'option_animate_duration', NULL);
+  }
+  if (isset($values['option_background_image']) && $values['option_background_image'] && !empty($values['option_background_image'])) {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_image', $values['option_background_image']);
+  } else {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_image', NULL);
+  }
+   if ($values['option_background_type']) {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_type', $values['option_background_type']);
+  } else {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_type', NULL);
+  }
+   if ($values['option_background_parallax_ratio']) {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_parallax_ratio', $values['option_background_parallax_ratio']);
+  } else {
+    _option_variable_set($values['module'], $values['delta'], 'option_background_parallax_ratio', NULL);
+  }
+}
+
+function dp_block_option_preprocess_block(&$vars) {
+  $block = $vars['elements']['#block'];
+  $module = $block->module;
+  $delta = $block->delta;
+  $animate = _option_variable_get($module, $delta, 'option_animate');
+  $animate_duration = _option_variable_get($module, $delta, 'option_animate_duration');
+  $background_image = _option_variable_get($module, $delta, 'option_background_image');
+  $background_image_type = _option_variable_get($module, $delta, 'option_background_type');
+  $background_parallax_ratio = _option_variable_get($module, $delta, 'option_background_parallax_ratio');
+
+  if ($animate != NULL && $animate != 'none') {
+    $library = libraries_get_libraries();
+    if (isset($library['appear'])) {
+      $path = $library['appear'];
+      drupal_add_js($path . '/jquery.appear.js');
+    }else{
+      drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/jquery.appear.js');
+    }
+    drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/script.js');
+    drupal_add_css(drupal_get_path('module', 'dp_block_option') . '/css/animate.css');
+    $vars['classes_array'][] = 'appear-animation';
+    $vars['attributes_array']['data-animate-type'] = $animate;
+  }
+
+  $styles = array();
+  if(!empty($animate_duration)){
+    $styles[] = '-webkit-animation-duration: '.$animate_duration.'s; -moz-animation-duration: '.$animate_duration.'s; animation-duration: '.$animate_duration.'s;';
+  }
+  // Conver String to array
+  if (isset($background_image['fid']) && $background_image['fid']) {
+    $background_fid = $background_image['fid'];
+  }else if(gettype($background_image) == 'string'){
+    $background_fid = drupal_json_decode($background_image);
+  }
+  if (isset($background_fid)) {
+    $file = file_load($background_fid);
+    $url = file_create_url($file->uri);
+    $styles[] = "background-image:url({$url}); background-size: cover; background-repeat: no-repeat;";
+    if ($background_image_type == 'parallax') {
+      $vars['classes_array'][] = 'block-setting-parallax';
+      $library = libraries_get_libraries();
+      if (isset($library['stellar'])) {
+        $path = $library['stellar'];
+        drupal_add_js($path . '/jquery.stellar.min.js');
+      }else{
+        drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/jquery.stellar.min.js');
+      }
+
+      drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/iscroll.js');
+      drupal_add_js(drupal_get_path('module', 'dp_block_option') . '/js/custom_stellar.js');
+
+      $vars['attributes_array']['data-stellar-background-ratio'] = $background_parallax_ratio;
+    }
+  }
+  if (!empty($styles)) {
+    $vars['attributes_array']['style'] = implode(";", $styles);
+  }
+}
+
+function _option_variable_set($module, $delta, $name, $value) {
+  variable_set($module . $delta . $name, $value);
+}
+function _option_variable_get($module, $delta, $name) {
+  return variable_get($module . $delta . $name, NULL);
+}
+function _effects_animations() {
+  return array(
+      'none' => 'None',
+      'flash' => 'flash',
+      'shake' => 'shake',
+      'bounce' => 'bounce',
+      'tada' => 'tada',
+      'swing' => 'swing',
+      'wobble' => 'wobble',
+      'pulse' => 'pulse',
+      'flip' => 'flip',
+      'flipInX' => 'flipInX',
+      'flipInY' => 'flipInY',
+      'fadeIn' => 'fadeIn',
+      'fadeInUp' => 'fadeInUp',
+      'fadeInDown' => 'fadeInDown',
+      'fadeInLeft' => 'fadeInLeft',
+      'fadeInRight' => 'fadeInRight',
+      'fadeInUpBig' => 'fadeInUpBig',
+      'fadeInDownBig' => 'fadeInDownBig',
+      'fadeInLeftBig' => 'fadeInLeftBig',
+      'fadeInRightBig' => 'fadeInRightBig',
+      'slideInDown' => 'slideInDown',
+      'slideInLeft' => 'slideInLeft',
+      'slideInRight' => 'slideInRight',
+      'bounceIn' => 'bounceIn',
+      'bounceInUp' => 'bounceInUp',
+      'bounceInDown' => 'bounceInDown',
+      'bounceInLeft' => 'bounceInLeft',
+      'bounceInRight' => 'bounceInRight',
+      'rotateIn' => 'rotateIn',
+      'rotateInUpLeft' => 'rotateInUpLeft',
+      'rotateInDownLeft' => 'rotateInDownLeft',
+      'rotateInUpRight' => 'rotateInUpRight',
+      'rotateInDownRight' => 'rotateInDownRight',
+      'lightSpeedIn' => 'lightSpeedIn',
+      'lightSpeedLeft' => 'lightSpeedLeft',
+      'lightSpeedRight' => 'lightSpeedRight',
+      'hinge' => 'hinge',
+      'rollIn' => 'rollIn',
+  );
+}

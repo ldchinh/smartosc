@@ -1,0 +1,37 @@
+/*********************
+ * Page Contact
+ ********************/
+.page-contact {
+  .section-content {
+    padding-bottom: 50px;
+  }
+  @include wide-screen {
+    #page-title {
+      font-size: 46px;
+    }
+  }
+}
+/* Location */
+.info-locate {
+  text-align: left;
+  margin: 0 0 20px;
+  vertical-align: top;
+  h4 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: $grayOne;
+  }
+  p {
+    margin: 0;
+    color: $grayOne;
+  }
+  @include mobi-landscape {
+    margin-bottom: 20px;
+  }
+  @include wide-screen {
+    margin-bottom: 30px;
+    h4 {
+      margin: 0 0 12px;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+/* ------------------------------------------------------------
+   Button
+------------------------------------------------------------ */
+.btn {
+  border: 2px solid $grayTwo;
+  padding: 4px 14px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $grayThree;
+  font-family:  $MontserratFontFamily;
+  font-weight:  $MontserratMedium;
+  font-size:    $baseFontSize;
+  white-space: normal;
+  line-height:  $baseLineHeight;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  vertical-align: middle;
+  @include border-radius(1px);
+  @include transition(all 0.3s linear);
+  //text-shadow: none;
+  //@include box-shadow(none);
+  &:hover,&:focus,&:active{
+    background: darken($grayTwo, 3%);
+    border-color: darken($grayTwo, 3%);
+    color: $white;
+    outline: none;
+    @include box-shadow(none);
+  }
+  &:active:focus, &.active:focus{
+    outline: none;
+    @include box-shadow(none);
+  }
+}
+.btn-primary{
+  background: none;
+  &:active:hover, &:active:focus{
+    background: $blackThree;
+    border-color: $blackThree;
+    color: $white;
+  }
+}
+.btn-default{
+  background: none;
+  border-color: $white;
+  color: $white;
+  &:hover,&:focus,&:active{
+    background: $white;
+    border-color: $white;
+    color: $grayTwo;
+  }
+}
+.btn-white{
+  background: $white;
+  border-color: $white;
+  color: $grayTwo;
+  text-shadow: none;
+  &:hover,&:focus,&:active {
+    background: none;
+    border-color: $white;
+    color: $white;
+  }
+}
+.btn-blue {
+  background: $greenTwo;
+  border-color: $greenTwo;
+  color: $white;
+  text-shadow: none;
+  &:hover,&:focus,&:active {
+    background: transparent;
+    border-color: $greenTwo;
+    color: $greenTwo;
+  }
+}
+.btn-dark{
+  background: none;
+  border-color: $blackThree;
+  color: $blackThree;
+  &:hover,&:focus,&:active{
+    background: $blackThree;
+    border-color: $blackThree;
+    color: $white;
+  }
+}
+.btn-orange {
+  background: $orangeGrayTwo;
+  border-color: $orangeGrayTwo;
+  color: $white;
+  &:hover,&:focus,&:active{
+    background: none;
+    border-color: $orangeGrayTwo;
+    color: $white;
+  }
+}
+
+
+//.btn-info{
+//  margin-bottom: 50px;
+//}
+.btn-radius {
+  padding: 8px 28px;
+  @include border-radius(10px)
+}
+// Button Size
+.btn-line{
+  border-width: 1px;
+}
+.btn-sm{
+  border-width: 1px;
+  padding: 7px 26px;
+  font-size: $baseFontSize - 2px;
+  line-height: 21.4px;
+  letter-spacing: 0.05em;
+}
+.btn-md {
+  padding: 8px 33px;
+  font-size: $baseFontSize + 3px;
+  letter-spacing: 0.16em;
+}
+.btn-lg {
+  padding: 10px 25px;
+  font-size: $baseFontSize + 2px;
+}
+.btn-big {
+  padding: 12px 24px;
+  letter-spacing: 2px;
+}
+.btn-big-lg {
+  padding: 16px 80px;
+  font-size: $baseFontSize + 3px;
+}

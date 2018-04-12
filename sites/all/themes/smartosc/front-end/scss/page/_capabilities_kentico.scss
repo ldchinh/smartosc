@@ -1,0 +1,122 @@
+.page-block-capabilities-kentico{
+  .main-wrapper-content {
+    overflow: hidden; // hidden responsive cloud
+  }
+  .section-content{
+    padding-top: 76px;
+    padding-bottom: 160px;
+    background: url("img/kentico/city.png") no-repeat left 10% bottom;
+  }
+  .section-description{
+    padding-top: 100px;
+    padding-bottom: 260px;
+    background: url("img/kentico/mountain_cloud.png") repeat-x bottom $blueLightTwo;
+  }
+}
+
+
+
+.kentico-banner{
+  position: relative;
+  background-position: top center;
+  background-size: cover;
+}
+.wrapper-icon-info{
+  margin-top: 200px;
+  margin-bottom: 200px;
+  @include mobi-only {
+    margin-top: 150px;
+    margin-bottom: 100px;
+  }
+  position: relative;
+  .pic {
+    display: none;
+  }
+  @include desktop {
+    .pic {
+      display: block;
+      position: absolute;
+      left: -115px;
+      top: 0;
+    }
+  }
+  .content-info{
+    background: $whiteNormalOne;
+    padding: 34px 40px;
+    h3{
+      font-weight: $MontserratBold;
+      font-size: 32px;
+      line-height: 44px;
+      letter-spacing: 0.025em;
+    }
+    p{
+      font-family: $MontserratFontFamily;
+      font-weight: $MontserratRegular;
+      font-size: 16px;
+      line-height: 28px;
+      letter-spacing: 0.025em;
+    }
+  }
+}
+
+
+
+.kentico-info{
+  h3{
+    font-weight: $MontserratRegular;
+    font-size: 60px;
+    line-height: 86px;
+    letter-spacing: 0;
+    color: $blueLightTwo;
+    margin-bottom: 37px;
+    @include mobi-only {
+      font-size: 40px;
+      line-height: 60px;
+    }
+  }
+  .inner-column{
+    h4{
+      color: $blueLightTwo;
+      font-weight: $MontserratMedium;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.kentico-offer{
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  &:before{
+    content: "";
+    width: 289px;
+    height: 161px;
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    right: -100px;
+    background: url("img/kentico/cloud.png") no-repeat;
+  }
+  h3{
+    font-weight: $MontserratLight;
+    font-size: 70px;
+    line-height: 100px;
+    letter-spacing: 0;
+    color: $white;
+    margin-bottom: 37px;
+    @include mobi-only {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+  }
+  .inner-column{
+    h4{
+      color: $white;
+      font-weight: $MontserratMedium;
+      margin-bottom: 10px;
+    }
+    p{
+      color: $white;
+    }
+  }
+}

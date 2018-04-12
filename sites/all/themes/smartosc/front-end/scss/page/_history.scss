@@ -1,0 +1,547 @@
+/*********************
+ * Page Case Study
+ ********************/
+/* FullPage JS*/
+.full-one-page {
+  &:not(.fp-viewing-0):not(.fp-responsive) .section-header{
+    display: none;
+  }
+  &:not(.fp-responsive) .main-wrapper-content{
+    padding-top: 0;
+  }
+  .section-content {
+    padding-bottom: 0;
+    > .container{
+      width: auto;
+      padding: 0;
+    }
+  }
+  .section-fixed-bottom{
+    display: none;
+  }
+  @include breakpoint-max(599px) {
+    .section-fixed-bottom{
+      display: block;
+    }
+  }
+}
+#fp-nav{
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  z-index: 10;
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 12px;
+    li {
+      padding: 4px 0;
+      line-height: 1;
+      display: block;
+      text-align: center;
+      a{
+        padding: 3px;
+        display: inline-block;
+        span {
+          width: 6px;
+          height: 6px;
+          display: block;
+          background: rgba(255, 255, 255, 0.5);
+          @include border-radius(50%);
+        }
+        &.active, &.active span{
+          background: rgba(255, 255, 255, 1);
+          @include border-radius(50%);
+        }
+      }
+    }
+  }
+}
+
+/* History */
+.one-page-scroll {
+  font-family: $MontserratFontFamily;
+  font-weight: $MontserratMedium;
+  font-size: 26px;
+  line-height: 1.2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+
+  .container {
+    height: 100%;
+    padding-top: 135px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .scroll-section {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    position: relative;
+    color: $white;
+    &:nth-child(2),
+    &:nth-child(11) {
+      background-color: #2c9fcd;
+      .year {
+        color: #2c9fcd;
+      }
+    }
+    &:nth-child(3),
+    &:nth-child(12) {
+      background-color: #e8a338;
+      .year {
+        color: #e8a338;
+      }
+    }
+    &:nth-child(4),
+    &:nth-child(13) {
+      background-color: #cf282e;
+      .year {
+        color: #cf282e;
+      }
+    }
+    &:nth-child(5),
+    &:nth-child(14) {
+      background-color: #2cbeb9;
+      .year {
+        color: #2cbeb9;
+      }
+    }
+    &:nth-child(6),
+    &:nth-child(15) {
+      background-color: #93c73f;
+      .year {
+        color: #93c73f;
+      }
+    }
+    &:nth-child(7),
+    &:nth-child(16) {
+      background-color: #2c9fcd;
+      .year {
+        color: #2c9fcd;
+      }
+    }
+    &:nth-child(8),
+    &:nth-child(17) {
+      background-color: #e8a338;
+      .year {
+        color: #e8a338;
+      }
+    }
+    &:nth-child(9),
+    &:nth-child(18) {
+      background-color: #cf282e;
+      .year {
+        color: #cf282e;
+      }
+    }
+    &:nth-child(10),
+    &:nth-child(19) {
+      background-color: #2cbeb9;
+      .year {
+        color: #2cbeb9;
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+    table {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      tbody,
+      thead,
+      tfoot {
+        border: none;
+        background: transparent;
+      }
+      tr {
+        td, th {
+          padding: 0 15px;
+          border: none;
+          vertical-align: middle;
+          background: transparent;
+          min-width: 40%;
+          max-width: 50%;
+        }
+      }
+    }
+  }
+  @include breakpoint-max(991px) {
+    .scroll-section table tr {
+      td, th {
+        padding: 25px 0;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  @include breakpoint(599px,991px){
+    .scroll-section table tr td{
+      &.picture{
+        display: none;
+      }
+      &:first-child{
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+  @include breakpoint-max(599px) {
+    .scroll-section table tr {
+      td, th {
+        padding: 15px 0;
+      }
+    }
+  }
+  .section-intro {
+    background: $green;
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+    .container {
+      padding-top: 0;
+    }
+    .intro-wrapper {
+      //float: left;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include translate(0, -50%);
+    }
+    h2 {
+      margin: 0 0 80px;
+      font-size: 60px;
+      line-height: 1.3;
+      color: $white;
+      font-family: $northface;
+    }
+    p {
+      margin: 0;
+    }
+    a {
+      background-color: transparent;
+      font-family: $MontserratFontFamily;
+      font-weight: $MontserratExtraBold;
+      font-size: 20px;
+      text-decoration: none;
+      color: $white;
+      position: relative;
+      width: 230px;
+      padding: 0 50px 2px 10px;
+      text-align: center;
+      line-height: 46px;
+      display: inline-block;
+      border: 3px solid $white;
+      @include border-radius(5px);
+      @include box-shadow(4px 5px 0 $green, 6px 7px 6px lighten($green, 10%));
+      &:active {
+        top: 3px;
+        @include box-shadow(1px 2px 0 $green, 2px 3px 2px lighten($green, 10%));
+      }
+      &:before {
+        background-color: darken($green, 12%);
+        font-family: $FontAwesome;
+        content: "\f063";
+        font-size: 13px;
+        line-height: 24px;
+        text-align: center;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        margin-top: -12px;
+        @include border-radius(50%);
+        @include box-shadow(inset 0px 1px 0px darken($green, 30%), 0px 1px 0px lighten($green, 15%));
+      }
+    }
+  }
+  .history-block {
+    //float: left;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    &:before {
+      //float: right;
+      bottom: 100%;
+      right: 0;
+      margin: 0 0 -4px;
+      border-right: 4px solid $white;
+      border-bottom: 4px solid $white;
+      @include border-radius(0 0 60px 0);
+      background: transparent;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      content: " ";
+    }
+    &:after {
+      //float: left;
+      left: 0;
+      bottom: 0;
+      border-left: 4px solid $white;
+      border-top: 4px solid $white;
+      @include border-radius(60px 0 0 0);
+      background: transparent;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      content: " ";
+    }
+  }
+  .right-content .history-block {
+    &:before {
+      right: auto;
+      left: 0;
+      border-right: none;
+      border-left: 4px solid $white;
+      @include border-radius(0 0 0 60px);
+    }
+    &:after {
+      left: auto;
+      right: 0;
+      border-left: none;
+      border-right: 4px solid $white;
+      @include border-radius(0 60px 0 0);
+    }
+  }
+
+  .scroll-section.first .history-block:before,
+  .scroll-section.last .history-block:after {
+    display: none;
+    border: none;
+    content: "";
+  }
+
+  .history-block {
+    .year {
+      //float: left;
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      top: 0;
+      width: 150px;
+      height: 150px;
+      margin: -73px 0 0 -75px;
+      text-align: center;
+      line-height: 150px;
+      font-size: 40px;
+      text-transform: uppercase;
+      background: $white;
+      @include border-radius(50%);
+      color: $green;
+    }
+    .history-content {
+      z-index: 4;
+      padding: 0 35px;
+      //float: left;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include translate(0, -50%);
+      h3 {
+        font-size: 40px;
+        text-transform: uppercase;
+        margin: 0 0 5px;
+        strong {
+          color: #fcdbb1;
+        }
+      }
+      p {
+        margin: 0 0 5px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: block;
+          padding: 0 0 0 32px;
+          position: relative;
+          margin: 0 0 25px;
+          &:before {
+            content: "\f04b";
+            //float: left;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            font-family: $FontAwesome;
+            font-size: 12px;
+          }
+          &.history-title:before {
+            top: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint-max(1199px) {
+    font-size: 20px;
+    .container {
+      width: 960px;
+    }
+    .history-block {
+      .history-content {
+        h3 {
+          font-size: 30px;
+        }
+        ul li {
+          padding: 0 0 0 25px;
+          margin: 0 0 20px;
+          &:before {
+            top: 3px;
+          }
+          &.history-title:before {
+            top: 11px;
+          }
+        }
+      }
+      img {
+        max-width: 400px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+
+  @include breakpoint-max(991px) {
+    .container {
+      padding-left: 33px;
+      padding-right: 33px;
+      width: 100%;
+    }
+    .history-block {
+      .history-content {
+        padding: 0 60px;
+      }
+      .year {
+        font-size: 34px;
+        width: 120px;
+        height: 120px;
+        margin: -58px 0 0 -60px;
+        line-height: 120px;
+      }
+      img {
+        max-width: 520px;
+      }
+    }
+  }
+
+  @include breakpoint-max(767px) {
+    font-size: 16px;
+    .history-block {
+      .history-content {
+        h3 {
+          font-size: 26px;
+        }
+        ul li {
+          margin: 0 0 18px;
+          &:before {
+            top: 4px;
+            font-size: 9px;
+          }
+          &.history-title:before {
+            top: 11px;
+          }
+        }
+      }
+      img {
+        max-width: 400px;
+      }
+    }
+  }
+
+  @include breakpoint(600px, 991px){
+    .section-intro{
+      .intro-wrapper{
+        padding-top: 80px;
+      }
+      h2{
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      .btn-start{
+        font-size: 16px;
+        line-height: 36px;
+      }
+    }
+    .container{
+      padding-top: 75px;
+      .history-content{
+        top: 0;
+        @include translate(0, 60px);
+      }
+    }
+  }
+
+  @include breakpoint-max(599px) {
+    .section-intro {
+      @include clearfix;
+      display: block;
+      border-bottom: 1px solid $white;
+      .container {
+        padding: 0;
+      }
+      .intro-wrapper {
+        left: auto;
+        top: auto;
+        @include transform(none);
+        position: relative;
+        padding: 40px $gutter 40px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+      a {
+        display: none;
+      }
+    }
+    .fp-table,
+    .fp-table .fp-tableCell{
+      height: auto !important;
+    }
+    .container {
+      padding: 80px $gutter 0;
+    }
+    .history-block {
+      height: auto;
+      .history-content {
+        padding: 50px 30px 30px;
+        position: relative;
+        left: auto;
+        top: auto;
+        @include transform(none);
+        h3 {
+          font-size: 22px;
+        }
+        ul li.history-title:before {
+          top: 8px;
+        }
+      }
+      .year {
+        font-size: 25px;
+        width: 90px;
+        height: 90px;
+        margin: -43px 0 0 -45px;
+        line-height: 90px;
+      }
+      img {
+        max-width: 230px;
+      }
+    }
+  }
+
+}

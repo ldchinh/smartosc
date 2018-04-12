@@ -1,0 +1,11 @@
+name = General
+description = "General."
+core = 7.x
+package = SmartOSC Develop
+
+
+files[] = class/count_pager_opportunities.model.inc
+
+configure = admin/config/system/smartosc-config
+
+dependencies[] = elements

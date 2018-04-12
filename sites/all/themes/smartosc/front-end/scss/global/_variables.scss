@@ -1,0 +1,129 @@
+// Typography
+// -------------------------
+$MontserratThin:        100;
+$MontserratExtraLight:  200;
+$MontserratLight:       300;
+$MontserratRegular:     400;
+$MontserratMedium:      500;
+$MontserratSemiBold:    600;
+$MontserratBold:        700;
+$MontserratExtraBold:   800;
+$MontserratBlack:       900;
+
+$OpenSansLight:         300;
+$OpenSansRegular:       400;
+$OpenSansSemiBold:      600;
+$OpenSansBold:          700;
+$OpenSansExtraBold:     800;
+
+$ArvoRegular:     400;
+$ArvoBold:        700;
+
+$OpenSansFontFamily:    'Open Sans', sans-serif;
+$MontserratFontFamily:  'Montserrat', sans-serif;
+$ArvoFontFamily:    'Arvo', serif;
+
+@font-face {
+  font-family: 'northface';
+  src: url('../fonts/northface/northface-webfont.eot');
+  src: url('../fonts/northface/northface-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/northface/northface-webfont.woff2') format('woff2'),
+  url('../fonts/northface/northface-webfont.woff') format('woff'),
+  url('../fonts/northface/northface-webfont.ttf') format('truetype'),
+  url('../fonts/northface/northface-webfont.svg#northface') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$northface              : 'northface';
+$FontAwesome            : 'FontAwesome';
+
+// --------------------------------------------------
+$baseFontSize:          13px;
+$baseLineHeight:        20px;
+$gutter-width:          30px;
+$gutter:                $gutter-width / 2;
+
+
+// colors
+$black:                 #000;
+$white:                 #fff;
+$gray:                  #555;
+$dark:                  #1f1f1f;
+$darkBrown:             #331916;
+$red:                   #ff0000;
+$yellow:                #ffc40d;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
+$green:                 #00ab4e;
+$blue:                  #2d6ab3;
+
+// Grays
+$grayOne:               #111;
+$grayTwo:               #222;
+$grayThree:             #333;
+$grayFour:              #444;
+$grayFive:              #555;
+$graySix:               #666;
+$graySeven:             #777;
+$grayEight:             #888;
+$grayNine:              #999;
+$grayNormalOne:         #414042;
+$grayNormalTwo:         #636363;
+$grayRanOne:            #4b5257;
+$grayRanTwo:            #202020;
+$grayRanThree:          #3c3c3c;
+$grayRanFour:           #e5e5e5;
+$grayRanFive:           #f3f3f3;
+$grayRanSix:            #9fa3a7;
+$grayRanSeven:          #f6f6f6;
+$grayRanEight:          #bfbfbf;
+$grayLighter:           #eee;
+$grayLightOne:          #e7e7e7;
+$grayLightTwo:          #efefef;
+$grayLightThree:        #c5c5c5;
+$grayLightFour:         #ddd;
+$grayLightfive:         #DEDFE2;
+$grayLightSix:          #f7f6f6;
+$grayLightSevent:       #ededed;
+$grayLightEight:        #d6d6d6;
+$grayLightNine:         #F1F1F1;
+$whiteNormalOne:        #efeded;
+$whiteNormalTwo:        #e8e9ed;
+$blackOne:              #181819;
+$blackTwo:              #636363;
+$blackThree:            #414042;
+$blackFour:             #212121;
+$blackFive:             #a9a8a9;
+$blackSix:              #252525;
+$blackSevent:           #353535;
+$blueOne:               #049cdb;
+$blueTwo:               #135ca8;
+$blueThree:             #0064cd;
+$blueFour:              #309bd2;
+$blueFive:              #275cab;
+$blueSix:               #429cca;
+$blueSevent:            #27a2aa;
+$blueEight:             #272b2e;
+$blueNine:              #0b81cb;
+$blueLightOne:          #2cb6e9;
+$blueLightTwo:          #0097f6;
+$yellowLight:           #d7cb48;
+$orangeLightOne:        #F48811;
+$orangeLightTwo:        #f35a16;
+$orangeLightThree:      #d09d26;
+$orangeLightFour:       #ffd483;
+$orangeLightFive:       #f47b20;
+$orangeGrayOne:         #c76418;
+$orangeGrayTwo:         #d95f1f;
+$greenLight:            #29BCB8;
+$greenOne:              #37B955;
+$greenTwo:              #4db848;
+$greenThree:            #95bf46;
+$orangeOne:             #ed4b24;
+$redOne:                #ed1e22;
+$redTwo:                #F60C0D;
+$redThree:              #9d261d;
+$redFour:               #e11f27;
+$purpleOne:             #332735;

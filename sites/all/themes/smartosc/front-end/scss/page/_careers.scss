@@ -1,0 +1,335 @@
+/**************
+ * Page Careers
+ *************/
+.page-jobs-list {
+  h1.title{
+    display: none;
+  }
+  .section-content{
+    padding-top: 70px;
+  }
+  .section-description h3.heading-title{
+    font-size: 36px;
+    line-height: 58px;
+    letter-spacing: normal;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    text-transform: capitalize;
+  }
+}
+.page-jobs-details{
+  .section-content{
+    padding-bottom: 60px;
+    a.apply-btn{
+      margin-top: 40px;
+    }
+  }
+  .breadcrumb{
+    margin-bottom: 40px;
+  }
+}
+
+.careers-detail-banner{
+  h1{
+    margin-bottom: 5px;
+    color: $grayRanSeven;
+    font-size: 40px;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+  }
+  .offices{
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: $white;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratRegular;
+    letter-spacing: 0.05em;
+    i{
+      font-size: 18px;
+      margin-right: 8px;
+    }
+  }
+  .introduction{
+    margin-top: 25px;
+    color: $white;
+    margin-bottom: 3px;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratRegular;
+    letter-spacing: 0.05em;
+    line-height: 20px;
+    font-size: 14px;
+  }
+}
+
+/* carrers department*/
+.carrers_department{
+  color: $black;
+  margin-bottom: 25px;
+  h3{
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.025em;
+    margin-bottom: 8px;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    color: $blackFour;
+  }
+  .careers-office{
+    padding-left: 13px;
+    overflow: hidden;
+    h4{
+      position: relative;
+      float: left;
+      color: $grayEight;
+      font-size: 14px;
+      line-height: 33px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0;
+      &:before {
+        content: "\f105";
+        position: absolute;
+        left: -12px;
+        font-family: $FontAwesome;
+        font-size: 18px;
+      }
+      a{
+        color: inherit;
+        text-transform: capitalize;
+        font-family: $MontserratFontFamily;
+        font-weight: $MontserratRegular;
+        &:hover{
+          color: $blueFive;
+        }
+      }
+    }
+    p{
+      float: right;
+      color: $grayEight;
+      font-size: 12px;
+      line-height: 28px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0;
+      font-family: $MontserratFontFamily;
+      font-weight: $MontserratLight;
+      @include mobi-only {
+        clear: both;
+      }
+    }
+  }
+}
+
+/* career life at smart */
+.career-life-at-smart{
+  background: $grayRanFive;
+  overflow: hidden;
+  position: relative;
+}
+.careers-info-list{
+  padding-top: 60px;
+  padding-bottom: 40px;
+  h4.title{
+    margin-bottom: 40px;
+    font-size: 36px;
+    line-height: 58px;
+	letter-spacing: normal;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+  }
+  h5{
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 26px;
+	letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratBold;
+  }
+  p{
+    font-size: 12px;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+  }
+  ul{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    li{
+      margin-bottom: 20px;
+    }
+  }
+  @include mobi-only {
+    h4.title{
+      font-size: 20px;
+    }
+  }
+}
+@include tablet {
+  .careers-info-list{
+    position: relative;
+    z-index: 2;
+  }
+  .career-life-at-smart .image {
+    height: 100%;
+    width: 100%;
+    margin-right: -50%;
+    padding: 0 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    img{
+      float: left;
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+//use box-icon.scss
+
+/* Last News */
+.for-student-grid{
+  margin-bottom: 56px;
+  h4{
+    margin: 16px 0;
+    font-size: 15px;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratMedium;
+    a{
+      color: $black;
+      &:hover{
+        color: $blueFive;
+      }
+    }
+  }
+  p{
+    font-size: 12px;
+    line-height: 20px;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratRegular;
+  }
+}
+
+
+
+/****************
+ * Careers Detail
+ ****************/
+.faqs-reference{
+  margin-top: 20px;
+  .link-faq{
+    font-size: 14px;
+    font-weight: $OpenSansBold;
+    text-decoration: underline;
+  }
+}
+
+/* Popup */
+html.overlay-open-popup body {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.careers-popup {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  @include box-rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none;
+  &.show-popup {
+    display: block;
+  }
+  &.hide-popup {
+    display: none;
+  }
+  h3 {
+    display: block;
+    border-bottom: 2px dashed #ddd;
+    padding: 0 0 15px;
+    margin: 0 0 22px;
+  }
+  .popup-content {
+    padding: 20px;
+    background: #fff;
+    width: 90%;
+    left: 50%;
+    top: 0;
+    margin-top: 120px;
+    margin-bottom: 100px;
+    z-index: 10;
+    position: absolute;
+    @include translate(-50%,0);
+    @include tablet {
+      width: 600px;
+      margin-top: 150px;
+    }
+  }
+  .close-btn {
+    float: left;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: #fff;
+    font-size: 18px;
+    width: 34px;
+    height: 34px;
+    line-height: 28px;
+    border: 2px solid $black;
+    @include border-radius(50%);
+    text-align: center;
+    color: $black;
+    cursor: pointer;
+    .fa {
+      line-height: 28px;
+    }
+  }
+  .curriculum-vitae-form{
+    .form-item{
+      margin-bottom: 20px;
+    }
+  }
+}
+
+
+/****************
+ /* View: Careers: Search page (opportunities)
+
+****************/
+//.page-career-opportunities{
+//  .section-highlights{
+//    .views-exposed-form{
+//      margin-top: 30px;
+//      margin-bottom: 50px;
+//      text-align: center;
+//      .views-exposed-widget {
+//        width: auto;
+//        vertical-align: top;
+//        display: inline-block;
+//        margin: 0 8px;
+//        .form-submit{
+//          padding-top: 9px;
+//          padding-bottom: 9px;
+//        }
+//      }
+//    }
+//  }
+//
+//  h1#page-title{
+//    margin-top: 0;
+//  }
+//  .osc-careers{
+//    margin-bottom: 30px;
+//  }
+//  .department a{
+//    color: $blackFour;
+//  }
+//  .office{
+//    margin-bottom: 20px;
+//  }
+//}

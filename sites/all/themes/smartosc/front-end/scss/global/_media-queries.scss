@@ -1,0 +1,69 @@
+/* ------------------------------------------------------------
+   Mixin Media Queries width Breakpoint base on Bootstrap
+------------------------------------------------------------ */
+$large-screen-width     : 1400px;
+$wide-screen-width      : 1200px;
+$base-width             : 992px;
+$tablet-width           : 768px;
+$phablet-landscape      : 640px;
+$phablet-portrait       : 360px;
+$mobile-landscape-width : 480px;
+$mobile-portrait-width  : 320px;
+
+@mixin large-screen {
+  @media only screen and (min-width: $large-screen-width) { @content; }
+}
+
+@mixin wide-screen {
+  @media only screen and (min-width: $wide-screen-width) { @content; }
+}
+
+@mixin desktop-medium {
+  @media only screen and (min-width: $base-width) and (max-width: $wide-screen-width - 1) { @content; }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $base-width) { @content; }
+}
+
+@mixin tablet-mobi {
+  @media only screen and (max-width: $base-width - 1) { @content; }
+}
+
+@mixin tablet-only {
+  @media only screen and (min-width: $tablet-width) and (max-width: $base-width - 1) { @content; }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: $tablet-width) { @content; }
+}
+
+@mixin mobi-landscape {
+  @media only screen and (min-width: $mobile-landscape-width) { @content; }
+}
+
+@mixin mobi-only {
+  @media only screen and (max-width: $tablet-width - 1) { @content; }
+}
+
+@mixin breakpoint( $min-width, $max-width ) {
+  @media only screen and (min-width: $min-width) and (max-width: $max-width) { @content; }
+}
+
+@mixin breakpoint-min( $min-width ) {
+  @media only screen and (min-width: $min-width) { @content; }
+}
+
+@mixin breakpoint-max( $max-width ) {
+  @media only screen and (max-width: $max-width) { @content; }
+}
+
+@mixin breakpoint-max-height( $max-height ) {
+  @media screen and ( max-height: $max-height ){ @content; }
+}
+@mixin breakpoint-min-height( $min-height ) {
+  @media screen and ( min-height: $min-height ){ @content; }
+}
+@mixin breakpoint-height( $min-height, $max-height ) {
+  @media screen and (min-height: $min-height) and (max-height: $max-height) { @content; }
+}

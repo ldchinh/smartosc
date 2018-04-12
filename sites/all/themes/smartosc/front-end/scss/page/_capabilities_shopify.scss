@@ -1,0 +1,154 @@
+// Background
+//.page-block-capabilities-shopify .main-wrapper-content{
+//  background-image: url("img/capabilities/shoptify-pattern.png");
+//}
+
+.shopify-banner{
+  position: relative;
+  background-position: top center;
+  background-size: cover;
+  @include desktop {
+    height: 780px;
+  }
+
+  // Background
+  //.step-shapes:before {
+  //  display: none;
+  //}
+  //@include desktop {
+	//background-image: url("img/capabilities/shoptify-banner.png");
+  //}
+  //@include tablet-mobi{
+	//background-image: url("img/capabilities/shoptify-picbn.jpg");
+  //}
+  // Not Background
+  background-image: url("img/capabilities/shoptify-picbn.jpg");
+  @include tablet-mobi{
+    .step-shapes:before {
+      display: none;
+    }
+  }
+
+}
+.shopify-banner-bottom{
+  @include desktop {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .container{
+    position: relative;
+  }
+  .laptop-info {
+    @include desktop {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 930px;
+      height: 550px;
+      padding: 62px 160px;
+      background-image: url("img/capabilities/shoptify-laptop.png");
+    }
+    @include tablet-mobi{
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      margin: 80px 0px;
+    }
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    .pic{
+      margin-bottom: 20px;
+    }
+    .info{
+      color: $white;
+      font-family:  $MontserratFontFamily;
+      font-weight:  $MontserratRegular;
+      font-size: 14.5px;
+      letter-spacing: 0.025em;
+      line-height: 27px;
+    }
+  }
+}
+
+// Shoptify Info
+.shopify-info{
+  padding-top: 116px;
+  padding-bottom: 300px;
+  h3{
+    color: $greenThree;
+    font-weight:  $MontserratRegular;
+    font-size: 60px;
+    //line-height: 85px;
+    letter-spacing: 0;
+    margin-bottom: 52px;
+    @include mobi-only{
+      margin-top: 20px;
+      margin-bottom: 40px;
+      font-size: 8vw;
+      font-weight:  $MontserratMedium;
+    }
+  }
+  .inner-column{
+    h4{
+      color: $orangeLightThree;
+    }
+  }
+}
+
+@include desktop {
+  .shopify-info,
+  .shopify-offer {
+    .inner-column{
+      padding-right: 35px !important;
+      padding-left: 35px !important;
+    }
+  }
+}
+
+
+// Shoptify Offer
+.shopify-offer{
+  background: $orangeLightFour;
+  padding-bottom: 80px;
+  .step-shapes:before {
+    border-color: transparent $orangeLightFour $orangeLightFour transparent;
+    @include tablet-mobi {
+      background: $orangeLightFour;
+    }
+  }
+  .container{
+    position: relative;
+  }
+  .title-shapes{
+    position: absolute;
+    @include tablet {
+      bottom: 80px;
+      @include desktop {
+        right: 0;
+      }
+    }
+    @include mobi-only {
+      bottom: 0px;
+      width: 100%;
+      text-align: center;
+    }
+    h3{
+      letter-spacing: 0;
+      vertical-align: bottom;
+      font-weight:  $MontserratLight;
+      @include tablet {
+        font-size: 70px;
+        display: inline-block;
+        padding-left: 50px;
+      }
+      @include mobi-only{
+        margin-top: 20px;
+        margin-bottom: 40px;
+        font-size: 8vw;
+        font-weight:  $MontserratMedium;
+      }
+    }
+  }
+}

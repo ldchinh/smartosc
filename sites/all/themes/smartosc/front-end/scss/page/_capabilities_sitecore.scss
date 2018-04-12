@@ -1,0 +1,389 @@
+body.page-block-capabilities-sitecore{
+  .section-content {
+    //background-image: url("/sites/all/themes/smartosc/images/capabilities/sitecore/bg.jpg");
+    background-size: cover;
+    background-color: #F60C0D;
+  }
+}
+
+
+.info_sitecore{
+  padding: 100px 0;
+  p{
+    font-family:  $MontserratFontFamily;
+    font-weight:  $MontserratLight;
+    font-size: 17px;
+    color: $white;
+    text-align: l;
+    letter-spacing: 2px;
+    line-height: 44px;
+    margin-bottom: 30px;
+    @include mobi-only{
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+}
+
+
+.sitecore_statistics{
+  padding: 180px 0;
+  h3{
+    font-family:  $MontserratFontFamily;
+    font-weight:  $MontserratThin;
+    color: $white;
+    text-transform: uppercase;
+    text-align: right;
+    @include desktop{
+      font-size: 100px;
+    }
+    @include tablet {
+      margin-bottom: 0;
+    }
+    @include mobi-only{
+      font-size: 26px;
+      text-align: center;
+      font-weight:  $MontserratBold;
+    }
+  }
+}
+.statistics-content{
+  overflow: hidden;
+  .round_info{
+    width: 200px;
+    height: 200px;
+    padding: 0 30px;
+    margin: 30px auto;
+  }
+  @include desktop {
+    .statistics-round:nth-child(2n-1){
+      margin-top: 10px;
+    }
+    .statistics-round:nth-child(2n){
+      margin-top: 70px;
+    }
+  }
+}
+.round_info{
+  background: $white;
+  box-shadow: inset 0px 0px 0px 5px $redTwo;
+  border: 2px solid $white;
+  color: $redTwo;
+  text-align: center;
+  letter-spacing: 1.2px;
+  @include border-radius(50%);
+  h4{
+    font-weight:  $MontserratBold;
+    font-size: 50px;
+    color: inherit;
+    margin-bottom: 0;
+  }
+  p{
+    font-family:  $MontserratFontFamily;
+    font-weight:  $MontserratMedium;
+    font-size: 16px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+}
+
+
+
+.shapes_info{
+  h3{
+    font-family:  $MontserratFontFamily;
+    font-weight:  $MontserratThin;
+    font-size: 60px;
+    color: $white;
+    text-transform: uppercase;
+    z-index: 15;
+    position: relative;
+    @include desktop{
+      font-size: 100px;
+    }
+    @include tablet {
+      margin-bottom: 0;
+    }
+    @include mobi-only{
+      font-size: 26px;
+      text-align: center;
+      padding-bottom: 5px;
+      font-weight:  $MontserratBold;
+    }
+  }
+  .shapes-content{
+    background: $white;
+    padding: 0 40px;
+    position: relative;
+    .table-cell{
+      height: 100%;
+    }
+    h4{
+      font-size: 26px;
+      font-weight: $MontserratBold;
+      text-transform: uppercase;
+    }
+    p{
+      font-family:  $MontserratFontFamily;
+      font-weight:  $MontserratLight;
+      font-size: 14px;
+      line-height: 32px;
+    }
+  }
+  &.left .shapes-triangle {
+    margin-right: 30px;
+  }
+  &.right .shapes-triangle {
+    margin-left: 30px;
+  }
+  @include mobi-only{
+    .shapes-triangle {
+      margin-top: 122px;
+      position: relative;
+    }
+    .shapes-content{
+      &:last-child{
+        padding-bottom: 60px;
+      }
+      padding-left: 20px;
+      padding-right: 20px;
+      h4{
+        font-size: 18px;
+        padding-top: 30px;
+      }
+      p{
+        margin-bottom: 0;
+      }
+    }
+    &.left {
+      .shapes-triangle {
+        @include box-shadow(28px -38px 0 2px $orangeLightOne);
+        &:after,
+        &:before {
+          content: "";
+          z-index: 10;
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          height: 0;
+          width: 100%;
+          border-bottom: 122px solid $white;
+          border-right: 122px solid transparent;
+        }
+        &:before {
+          top: -162px;
+          left: 30px;
+          border-bottom: 122px solid $orangeLightOne;
+          bottom: auto;
+        }
+      }
+    }
+    &.right {
+      .shapes-triangle {
+        @include box-shadow(-28px -38px 0 2px $orangeLightOne);
+        &:after,
+        &:before {
+          content: "";
+          z-index: 10;
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          height: 0;
+          width: 100%;
+          border-bottom: 122px solid $white;
+          border-left: 122px solid transparent;
+        }
+        &:before {
+          top: -162px;
+          left: -30px;
+          border-bottom: 122px solid $orangeLightOne;
+          bottom: auto;
+        }
+      }
+    }
+  }
+  @include breakpoint-max(360px) {
+    &.left,&.right{
+      .shapes-triangle {
+        margin-right: 0;
+        margin-left: 0;
+        @include box-shadow(0 -38px 0 0px $orangeLightOne);
+      }
+    }
+    .shapes-triangle {
+      margin-top: 0;
+      .shapes-content:first-child{
+        padding-top: 40px;
+      }
+      &:before, &:after{
+        display: none;
+      }
+    }
+  }
+  @include tablet {
+    .shapes-triangle {
+      display: flex;
+    }
+    &.left {
+      .shapes-content {
+        @include box-shadow(30px -38px 0 2px $orangeLightOne);
+        &:first-child {
+          padding-top: 40px;
+          margin-bottom: 222px;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 0;
+            width: 100%;
+            border-top: 222px solid $white;
+            border-left: 222px solid transparent;
+          }
+        }
+        &:last-child {
+          margin-top: 222px;
+          padding-bottom: 40px;
+          &:after,
+          &:before {
+            content: "";
+            z-index: 10;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            height: 0;
+            width: 100%;
+            border-bottom: 222px solid $white;
+            border-right: 222px solid transparent;
+          }
+          &:before {
+            top: -262px;
+            left: 30px;
+            border-bottom: 222px solid $orangeLightOne;
+            bottom: auto;
+          }
+        }
+      }
+    }
+    &.right {
+      h3 {
+        text-align: right;
+      }
+      .shapes-content {
+        @include box-shadow(-28px -38px 0 2px $orangeLightTwo);
+        padding-top: 40px;
+        &:last-child {
+          margin-bottom: 222px;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 0;
+            width: 100%;
+            border-top: 222px solid $white;
+            border-right: 222px solid transparent;
+          }
+        }
+        &:first-child {
+          margin-top: 222px;
+          padding-top: 0;
+          padding-bottom: 40px;
+          &:after,
+          &:before {
+            content: "";
+            z-index: 10;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            height: 0;
+            width: 100%;
+            border-bottom: 222px solid $white;
+            border-left: 222px solid transparent;
+          }
+          &:before {
+            top: -262px;
+            left: -30px;
+            border-bottom: 222px solid $orangeLightTwo;
+            bottom: auto;
+          }
+        }
+      }
+    }
+    &.right {
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -185px;
+        right: 100%;
+        height: 0;
+        z-index: 10;
+        width: 20px;
+        border-bottom: 222px solid transparent;
+        border-left: 492px solid #F60C0D;
+        border-right: 0px solid transparent;
+        border-top: 235px solid #F60C0D;
+      }
+      .shapes-content {
+        //Unset shadow left
+        &:nth-child(1) {
+          z-index: 3;
+        }
+        &:nth-child(2) {
+          z-index: 2;
+        }
+        &:nth-child(3) {
+          z-index: 1;
+        }
+      }
+    }
+    .shapes-content{
+      padding-right: 15px;
+      padding-left: 15px;
+      h4{
+        font-size: 20px;
+      }
+    }
+  }
+  @include desktop {
+    .shapes-content{
+      padding-right: 40px;
+      padding-left: 40px;
+      h4{
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+
+.shapes-background{
+  height: 400px;
+  background-size: cover;
+  @include tablet {
+    margin-top: -302px;
+    height: 1000px;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 0;
+      border-bottom: 222px solid $grayRanTwo;
+      border-left: 222px solid transparent;
+    }
+    .table-cell{
+      position: absolute;
+    }
+  }
+  .table-cell{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .button_shapes {
+    margin-top: 40px;
+  }
+}

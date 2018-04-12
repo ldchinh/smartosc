@@ -1,0 +1,547 @@
+.page-case-study-friso,
+.page-case-study-netatmo{
+  .introduction-scope h3.line:before {
+    background: #414042;
+  }
+}
+.banner_light{
+  .page-not-gradien .banner-recent{
+    .subtitle {
+      background: none;
+    }
+  }
+}
+@include mobi-only {
+  .page-case-study-club21 {
+    .our-solutions .element.right .pic {
+      margin-left: -15px;
+      margin-right: -15px;
+      max-width: none;
+    }
+  }
+}
+//Hard code: Fuck Design follow picture.
+// One page have one design. Not flexible
+
+.node-type-case-study {
+  @include desktop {
+    &.page-case-study-boozt,
+    &.page-case-study-friso,
+    &.page-case-study-netatmo{
+      .header_info {
+        .align-content{
+          text-align: left;
+        }
+        .title{
+          text-transform: uppercase;
+        }
+      }
+      .picture_info.right{
+        margin-right: 50%;
+      }
+    }
+    &.page-case-study-boozt .header_info,
+    &.page-case-study-friso .header_info {
+      top: 50%;
+      @include translate(0, -50%);
+      .align-content{
+        width: 50%;
+      }
+      [class*="col-md-offset-"],
+      [class^="col-md-offset-"]{
+        margin-left: auto;
+      }
+    }
+    &.page-case-study-netatmo{
+      .header_info {
+        [class*="col-md-offset-"],
+        [class^="col-md-offset-"]{
+          margin-left: 40%;
+          width: 60%;
+        }
+      }
+      ul.list-montse {
+        margin-top: 150px;
+      }
+    }
+  }
+  .section-content{
+    padding-bottom: 0;
+  }
+}
+
+/*********************
+ * Page Case Study
+ ********************/
+//@include desktop {
+//  .lr-86 {
+//    padding: 0 86px;
+//  }
+//}
+h3.line {
+  text-align: center;
+  position: relative;
+  &:before {
+    height: 1px;
+    width: 270px;
+    margin: 0 auto 66px;
+    content: '';
+    display: block;
+    background: $black;
+  }
+}
+h3.title-bold{
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: 0.025em;
+  color: $grayNormalOne;
+  font-family: $ArvoFontFamily;
+  font-weight: $ArvoRegular;
+  margin-bottom: 25px;
+  &:before {
+    margin-bottom: 35px;
+  }
+}
+ul.list-montse{
+  li{
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    color: inherit;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+  }
+}
+.case-study-special {
+  h3.title {
+    font-size: 18px;
+    line-height: 35px;
+    letter-spacing: 0.139em;
+    color: inherit;
+    text-transform: uppercase;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratMedium;
+    @include mobi-only {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  h3.large-title {
+    font-size: 46px;
+    //line-height: 71.4px;
+    letter-spacing: 0.02em;
+    color: inherit;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratThin;
+    @include mobi-only {
+      font-size: 30px;
+      line-height: 38px;
+    }
+  }
+}
+.info-regular{
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: inherit;
+  font-family: $MontserratFontFamily;
+  font-weight: $MontserratLight;
+  p{
+    margin-bottom: 26px;
+  }
+  ul{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    @include tablet-mobi {
+      text-align: center;
+    }
+    @include breakpoint-max($mobile-landscape-width){
+      text-align: left;
+    }
+    li{
+      margin: 10px 0;
+    }
+  }
+}
+
+.page-not-gradien{
+  .banner-recent{
+    &:before{
+      display: none;
+    }
+    .header_info{
+      top: 50%;
+      bottom: auto;
+      @include translate(0, -50%);
+    }
+    .subtitle {
+      margin-top: 10px;
+      @include mobi-only {
+        font-size: 19px;
+      }
+    }
+    &:before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    @include mobi-only {
+      .title,
+      .subtitle {
+        color: $white;
+      }
+    }
+  }
+  .introduction-scope{
+    background: $blueEight;
+    ul.list-check li{
+      line-height: 40px;
+    }
+  }
+  .sope-pic{
+    background: $blueEight;
+    &:after{
+      background: $white;
+    }
+  }
+}
+
+/* Introduction scope */
+.introduction-scope{
+  position: relative;
+  background: $purpleOne;
+  color: $white;
+  text-align: center;
+  h3.line:before{
+    background: $white;
+  }
+  .case-introduction{
+    margin: 66px 0 44px;
+  }
+  .case-scope{
+    h3.title{
+      margin-bottom: 32px;
+    }
+    .info-regular {
+      padding-bottom: 66px;
+    }
+  }
+}
+.sope-pic{
+  position: relative;
+  background: $purpleOne;
+  .container{
+    position: relative;
+    z-index: 2;
+  }
+  &:after{
+    height: 50%;
+    width: 100%;
+    content: '';
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    z-index: 1;
+
+    //background: -moz-linear-gradient(top, rgba(51,39,53,1) 0%, rgba(51,39,53,1) 70%, rgba(51,39,53,0.92) 74%, rgba(51,39,53,0.79) 78%, rgba(51,39,53,0.31) 89%, rgba(51,39,53,0.15) 94%, rgba(51,39,53,0) 100%); /* FF3.6-15 */
+    //background: -webkit-linear-gradient(top, rgba(51,39,53,1) 0%,rgba(51,39,53,1) 70%,rgba(51,39,53,0.92) 74%,rgba(51,39,53,0.79) 78%,rgba(51,39,53,0.31) 89%,rgba(51,39,53,0.15) 94%,rgba(51,39,53,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    //background: linear-gradient(to bottom, rgba(51,39,53,1) 0%,rgba(51,39,53,1) 70%,rgba(51,39,53,0.92) 74%,rgba(51,39,53,0.79) 78%,rgba(51,39,53,0.31) 89%,rgba(51,39,53,0.15) 94%,rgba(51,39,53,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#332735', endColorstr='#00332735',GradientType=0 ); /* IE6-9 */
+
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 26%, rgba(255,255,255,0.06) 32%, rgba(255,255,255,0.3) 46%, rgba(255,255,255,0.42) 54%, rgba(255,255,255,0.73) 65%, rgba(255,255,255,0.85) 76%, rgba(255,255,255,0.91) 79%, rgba(255,255,255,0.94) 86%, rgba(255,255,255,0.96) 91%, rgba(255,255,255,0.98) 97%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0.06) 32%,rgba(255,255,255,0.3) 46%,rgba(255,255,255,0.42) 54%,rgba(255,255,255,0.73) 65%,rgba(255,255,255,0.85) 76%,rgba(255,255,255,0.91) 79%,rgba(255,255,255,0.94) 86%, rgba(255,255,255,0.96) 91%, rgba(255,255,255,0.98) 97%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0.06) 32%,rgba(255,255,255,0.3) 46%,rgba(255,255,255,0.42) 54%,rgba(255,255,255,0.73) 65%,rgba(255,255,255,0.85) 76%,rgba(255,255,255,0.91) 79%,rgba(255,255,255,0.94) 86%, rgba(255,255,255,0.96) 91%, rgba(255,255,255,0.98) 97%,rgba(255,255,255,1) 100%);
+  }
+}
+
+/* picture info */
+.description-picture{
+  margin-top: 46px;
+  margin-bottom: 20px;
+}
+.picture_info{
+  margin-top: 49px;
+  padding-bottom: 49px;
+  @include mobi-only {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+  .pic{
+    margin-bottom: 20px;
+  }
+  @include desktop {
+    margin-left: 460px;
+    text-align: left;
+    position: relative;
+    p{
+      color: $purpleOne;
+      margin-bottom: 10px;
+    }
+    .pic{
+      position: absolute;
+      top: 0px;
+      right: 100%;
+      margin-right: 30px;
+      img{
+        max-width: none;
+      }
+    }
+    &.right{
+      margin-left: 0px;
+      margin-right: 460px;
+      .pic{
+        right: auto;
+        left: 100%;
+        margin-left: 30px;
+      }
+    }
+  }
+  h3.title{
+    color: $purpleOne;
+    margin-top: 15px;
+  }
+}
+
+/* our solutions */
+.our-solutions{
+  padding-top: 22px;
+  margin-bottom: 66px;
+  .element{
+    position: relative;
+    margin-top: 30px;
+    @include desktop {
+      margin-top: 66px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+    @include mobi-only {
+      padding-bottom: 15px;
+      margin-top: 15px;
+      text-align: center;
+      .info-regular{
+        text-align: left;
+      }
+    }
+    &:after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+  }
+  @include desktop {
+    .pic {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      padding-right: 40px;
+    }
+    .right .pic {
+      right: auto;
+      left: 100%;
+      padding-right: 0;
+      padding-left: 40px;
+    }
+  }
+  @include large-screen {
+    .pic{
+      max-width: none;
+    }
+  }
+  .pic{
+    margin-bottom: 20px;
+  }
+}
+
+/* Result column */
+.elresult-carousel{
+  padding-top: 48px;
+  h3.title {
+    font-size: 18px;
+    line-height: 35px;
+    letter-spacing: 0.139em;
+    color: inherit;
+    text-transform: uppercase;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratMedium;
+    @include mobi-only {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  @include desktop {
+    display: table;
+    .element-result{
+      display: table-cell;
+      vertical-align: top;
+      padding-left: 15px;
+      padding-right: 15px;
+      width: 30%;
+    }
+    .info-regular{
+      text-align: left;
+    }
+  }
+  @include tablet-mobi{
+    .element-result{
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* fun facts */
+.case-results{
+  margin-top: 66px;
+  margin-bottom: 66px;
+  .info-results{
+    margin-top: 66px;
+
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+  }
+  .funfact-carousel{
+    margin-top: 66px;
+    padding: 35px 0 30px;
+    .owl-dots{
+      margin-top: 20px;
+    }
+  }
+  .round-dotted{
+    @include desktop {
+      margin: -30px -12px;
+    }
+    @include tablet-only {
+      margin: -12px -12px;
+    }
+  }
+}
+
+.going_forward{
+  margin-top: 76px;
+  padding-bottom: 30px;
+}
+.pic_forward{
+  text-align: center;
+}
+
+
+/******************************
+ * Page Case Study Normal
+ ******************************/
+.case-study-normal{
+  h1.title{
+    font-size: 36px;
+    line-height: 52px;
+    letter-spacing: 0.025em;
+    color: $grayNormalOne;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    @include mobi-only {
+      font-size: 26px;
+      line-height: 24px;
+    }
+  }
+  p.subtitle{
+    font-size: 18px;
+    line-height: 38px;
+    letter-spacing: 0.02em;
+    color: $grayNormalOne;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+  }
+  .info-header{
+    text-align: center;
+    margin: 50px 0 70px;
+  }
+  .info-layout{
+    position: relative;
+    margin-bottom: 80px;
+    @include desktop {
+      .pic {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        padding-right: 40px;
+        max-width: none;
+      }
+    }
+    @include tablet-mobi {
+      text-align: center;
+      .pic {
+        margin-bottom: 20px;
+      }
+      .info{
+        text-align: left;
+      }
+    }
+
+    h3{
+      font-size: 18px;
+      line-height: 30px;
+      letter-spacing: 0.139em;
+      font-weight: $MontserratBold;
+    }
+    p{
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 0.01em;
+      color: $grayThree;
+      font-family: $MontserratFontFamily;
+      font-weight: $MontserratLight;
+    }
+    ul{
+      list-style: none;
+      li{
+        font-size: 14px;
+        line-height: 35px;
+        letter-spacing: 0.05em;
+        color: $grayThree;
+        font-family: $MontserratFontFamily;
+        font-weight: $MontserratLight;
+        &:before {
+          content: "\f105";
+          position: absolute;
+          left: 40px;
+          font-family: "FontAwesome";
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .case-grid{
+    margin-bottom: 22px;
+  }
+  .more-link{
+    clear: both;
+    padding: 22px 0 45px;
+    a{
+      padding: 12px 38px;
+    }
+  }
+}
+
+.our-solutions .right,
+.info-layout.default {
+  [class*="col-md-offset-"],
+  [class^="col-md-offset-"]{
+    margin-left: auto;
+  }
+  @include desktop {
+    .pic {
+      left: 100%;
+      right: auto;
+    }
+  }
+}

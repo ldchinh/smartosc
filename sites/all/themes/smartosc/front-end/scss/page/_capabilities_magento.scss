@@ -1,0 +1,450 @@
+body.page-block-capabilities-magento {
+  .section-content {
+    background-color: $white;
+    overflow: hidden;
+  }
+
+  //Background shapes
+  .main-wrapper-content {
+    overflow: hidden;
+  }
+  @include desktop {
+    .section-content-bottom {
+      padding-top: 130px;
+      padding-bottom: 150px;
+      position: relative;
+      &:before {
+        content: '';
+        background: $blueSevent;
+        top: 311px;
+        left: -50%;
+        height: 60.4%;
+        width: 200%;
+        display: block;
+        position: absolute;
+        @include transform(rotate(-30deg));
+      }
+    }
+    .section-description {
+      position: relative;
+      &:before {
+        content: '';
+        background: $grayRanFive;
+        height: 105%;
+        width: 200%;
+        display: block;
+        top: -242px;
+        left: -50%;
+        position: absolute;
+        z-index: -1;
+        @include transform(rotate(-30deg));
+      }
+    }
+    .section-info {
+      position: relative;
+      &:before {
+        content: '';
+        height: 1600px;
+        width: 200%;
+        display: block;
+        top: -24px;
+        left: -50%;
+        background: -webkit-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+        background: -o-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+        background: -ms-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+        background: -moz-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+        background: linear-gradient(to right, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+        position: absolute;
+        @include transform(rotate(-30deg));
+      }
+    }
+  }
+  @include wide-screen {
+    .section-content-bottom:before {
+      top: 254px;
+      height: 60.4%;
+    }
+  }
+  @include tablet-mobi {
+    .section-content-bottom{
+      background: $blueSevent;
+    }
+    .section-description {
+      background: $grayRanFive;
+    }
+    .section-info {
+      background: -webkit-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+      background: -o-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+      background: -ms-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+      background: -moz-linear-gradient(left, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+      background: linear-gradient(to right, rgba(228, 221, 211, 0.98) 0%, rgba(246, 243, 238, 0.98) 100%);
+    }
+  }
+  // End Background shapes
+}
+
+.shapes_highlights_info {
+  position: relative;
+  padding-bottom: 100px;
+  @include desktop {
+    &:before {
+      content: '';
+      height: 615px;
+      width: 100%;
+      top: 132px;
+      left: -110px;
+      display: block;
+      position: absolute;
+      background: url("img/capabilities/bg_highlights.png") no-repeat;
+    }
+    .shapes_content{
+      text-align: right;
+    }
+    .content-inline {
+      padding-left: 8%;
+      text-align: center;
+    }
+  }
+  @include tablet-mobi {
+    padding: 0 15px;
+    text-align: center;
+    h2{
+      color: $white;
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+    .info-content {
+      .content-inline {
+        padding: 0 15px 50px;
+        &:last-child{
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+  h2{
+    font-weight:  $MontserratThin;
+    font-family:  $MontserratFontFamily;
+    font-size: 60px;
+    letter-spacing: normal;
+    @include breakpoint-max( 560px ) {
+      font-size: 40px;
+      padding-top: 60px;
+      padding-bottom: 30px;
+    }
+  }
+  .info-content{
+    color: $white;
+    padding-bottom: 50px;
+    @include breakpoint-max( 560px ) {
+      padding-bottom: 20px;
+      .content-inline {
+        padding-bottom: 20px;
+      }
+    }
+    h3{
+      font-weight:  $MontserratBold;
+      font-family:  $MontserratFontFamily;
+      font-size: 42px;
+      color: inherit;
+      text-transform: uppercase;
+      margin-bottom: 0;
+      @include breakpoint-max( 560px ) {
+        font-size: 30px;
+        line-height: 1.5;
+      }
+      @include breakpoint-max( 480px ) {
+        font-size: 24px;
+      }
+    }
+    p{
+      font-weight:  $MontserratLight;
+      font-family:  $MontserratFontFamily;
+      font-size: 20px;
+      color: inherit;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.shapes_clients_info{
+  position: relative;
+  padding-top: 100px;
+  @include wide-screen {
+    &:before {
+      content: '';
+      height: 347px;
+      width: 273px;
+      bottom: 172px;
+      right: 0px;
+      display: block;
+      position: absolute;
+      background: url("img/capabilities/bg_our-clients.png") no-repeat;
+    }
+  }
+  @include desktop {
+    h2{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  @include tablet-mobi {
+    padding-bottom: 100px;
+    text-align: center;
+    h2 {
+      color: $white;
+    }
+    .content-left{
+      float: none;
+      display: inline-block;
+    }
+  }
+  h2{
+    font-weight:  $MontserratThin;
+    font-family:  $MontserratFontFamily;
+    font-size: 60px;
+    letter-spacing: normal;
+    @include breakpoint-max( 560px ) {
+      font-size: 40px;
+      padding-bottom: 10px;
+    }
+  }
+  .info-content{
+    overflow: hidden;
+    .content-left {
+      padding: 42px 27px;
+      @include desktop {
+        &:nth-child(6),
+        &:nth-child(10),
+        &:nth-child(14) {
+          clear: both;
+        }
+      }
+      @include breakpoint-max( 480px ) {
+        padding: 18px 15px;
+      }
+    }
+  }
+}
+
+
+.ecommerce-info{
+  padding-top: 70px;
+  padding-bottom: 70px;
+  position: relative;
+  font-family:  $MontserratFontFamily;
+  h3{
+    color: $grayNormalOne;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: normal;
+    font-weight:  $MontserratLight;
+    @include breakpoint-max( 560px ) {
+      font-size: 30px;
+      line-height: 1.5;
+    }
+    @include breakpoint-max( 480px ) {
+      font-size: 24px;
+    }
+  }
+  p{
+    color: $grayNormalTwo;
+    font-size: 16px;
+    line-height: 32px;
+    font-weight:  $MontserratLight;
+    @include breakpoint-max( 560px ) {
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+  @include desktop{
+    .background-image{
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 0;
+      padding-left: 20px;
+    }
+  }
+  @include tablet-mobi {
+    .detail {
+      float: none;
+    }
+    .background-image {
+      padding-top: 70px;
+    }
+  }
+}
+
+.magento-info{
+  padding-top: 70px;
+  @include tablet-mobi {
+    padding-bottom: 70px;
+    .content-block{
+      display: inline;
+    }
+  }
+  h2{
+    letter-spacing: normal;
+    color: $grayNormalOne;
+    font-weight: $MontserratThin;
+    font-family:  $MontserratFontFamily;
+    font-size: 60px;
+    @include desktop {
+      font-size: 70px;
+      position: absolute;
+      padding-bottom: 140px;
+      margin-bottom: 80px;
+      &:before {
+        content: '';
+        width: 400px;
+        height: 500px;
+        left: -266px;
+        bottom: 0;
+        position: absolute;
+        background: url(img/capabilities/why-magento.png) no-repeat left bottom;
+      }
+    }
+    @include breakpoint-max( 560px ) {
+      font-size: 40px;
+    }
+    @include breakpoint-max( 480px ) {
+      font-size: 36px;
+    }
+  }
+  .content-column{
+    h4{
+      color: $black;
+      font-size: 25px;
+      letter-spacing: normal;
+      padding-top: 20px;
+      @include breakpoint-max( 560px ) {
+        font-size: 18px;
+      }
+      @include breakpoint-max( 480px ) {
+        font-size: 16px;
+      }
+    }
+    p{
+      font-size: 16px;
+      line-height: 25px;
+      color: $grayNormalTwo;
+      font-weight:  $MontserratLight;
+      font-family:  $MontserratFontFamily;
+      @include breakpoint-max( 560px ) {
+        font-size: 14px;
+      }
+    }
+    @include desktop {
+      &:first-child {
+        padding-top: 370px;
+      }
+      &:nth-child(2) {
+        padding-top: 200px;
+      }
+    }
+  }
+}
+
+
+.our_ecommerce_info{
+  @include desktop {
+    padding-top: 150px;
+  }
+  h2{
+    font-size: 60px;
+    letter-spacing: normal;
+    color: $grayNormalOne;
+    font-weight: $MontserratThin;
+    font-family:  $MontserratFontFamily;
+    @include desktop-medium {
+      font-size: 50px;
+    }
+    @include mobi-only {
+      font-size: 40px;
+    }
+    @include breakpoint-max( 560px ) {
+      font-size: 34px;
+    }
+  }
+  .content-column{
+    text-align: right;
+    h4{
+      padding: 15px 0;
+      font-size: 25px;
+      font-weight:  $MontserratRegular;
+      font-family:  $MontserratFontFamily;
+      @include breakpoint-max( 560px ) {
+        font-size: 18px;
+      }
+      @include breakpoint-max( 480px ) {
+        font-size: 16px;
+      }
+    }
+    p{
+      font-size: 16px;
+      line-height: 25px;
+      font-weight:  $MontserratLight;
+      font-family:  $MontserratFontFamily;
+      @include breakpoint-max( 560px ) {
+        font-size: 14px;
+      }
+    }
+  }
+  @include tablet-mobi {
+    padding: 50px 15px;
+    .content-column {
+      text-align: left;
+    }
+  }
+}
+
+.case-studies-info{
+  min-height: 200px;
+  .table-cell{
+    width: 100%;
+    padding: 0 15px;
+  }
+  .user-pic {
+    padding-top: 40px;
+  }
+  a.btn{
+    font-weight: $MontserratBold;
+  }
+  @include desktop {
+    .user-pic {
+      position: relative;
+      &:before {
+        content: '';
+        background: url("img/capabilities/ecommerce-offering.png") no-repeat;
+        top: -280px;
+        left: 220px;
+        display: block;
+        height: 100%;
+        width: 200%;
+        position: absolute;
+      }
+    }
+  }
+  @include tablet-mobi {
+    a.btn{
+      padding: 8px 30px;
+      font-size: $baseFontSize;
+    }
+  }
+  @include breakpoint-max( 639px ) {
+    .cell-middle.align-right{
+      display: none;
+    }
+    .cell-middle{
+      text-align: center;
+      a.btn {
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
+    }
+  }
+}

@@ -1,0 +1,460 @@
+/* Banner */
+.banner-content {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  &:before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  // Banner Article detail & Case_study
+  .banner-inner {
+    padding-top: 140px;
+    padding-bottom: 140px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+  }
+  // Banner Careers page
+  &.center-bottom{
+    background-position: center bottom;
+  }
+  .item-list{
+    padding-top: 75px;
+    padding-bottom: 140px;
+  }
+  .owl-carousel .owl-dots{
+    position: absolute;
+    width: 100%;
+    bottom: -140px;
+    .owl-dot{
+      background: $white;
+      &.active{
+        background: $grayFour;
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $white;
+    font-size: 36px;
+    line-height: 1.8em;
+    letter-spacing: 0.1em;
+    //text-transform: uppercase;
+    @include wide-screen {
+      line-height: 60px;
+    }
+    @include mobi-only {
+      font-size: 22px;
+    }
+    a{
+      color: $white;
+    }
+  }
+  .read-more{
+    margin-top: 35px;
+    a.btn {
+      padding: 10px 34px;
+      font-size: 15px;
+      font-weight: $MontserratBold;
+    }
+  }
+  p {
+    color: $white;
+  }
+  .description-title a:not(.btn) {
+    color: $white;
+  }
+}
+
+// Banner Article detail & Case_study
+.description-title{
+  margin-top: 36px;
+  margin-bottom: 36px;
+  overflow: hidden;
+  h1,h2,h3,h4,h5,h6{
+    font-size: 30px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    font-weight: $MontserratRegular;
+    //text-transform: uppercase;
+  }
+  p{
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+  a:not(.btn){
+    color: $black;
+    &:hover {
+      color: $green;
+    }
+  }
+}
+
+// Banner Careers page
+.info-detail{
+  margin-top: 36px;
+  margin-bottom: 36px;
+  overflow: hidden;
+  h1,h2,h3,h4,h5,h6{
+    font-size: 40px;
+    margin-bottom: 6px;
+    line-height: 1.5em;
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+  }
+  p{
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratRegular;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+  }
+}
+
+.banner_light .banner-content{
+  h1,h2,h3,h4,h5,h6{
+    color: $blackThree;
+  }
+  p{
+    color: $grayRanSix;
+  }
+}
+.banner_light .banner-recent{
+  .title,
+  .subtitle{
+    color: $grayNormalOne;
+  }
+}
+.none-overlay:before,
+.banner_light .banner-content:before{
+  display: none;
+}
+
+/* Banner About */
+.description-detail{
+  padding: 0 15px;
+  text-transform: uppercase;
+  font-family: $MontserratFontFamily;
+  font-weight: $MontserratExtraLight;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 8px;
+    font-size: 22px;
+  }
+  p{
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.7;
+  }
+  @include tablet {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 30px;
+      margin: 0 0 12px;
+    }
+    p{
+      font-size: 20px;
+    }
+  }
+  @include wide-screen {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 46px;
+    }
+    p{
+      font-size: 30px;
+    }
+  }
+}
+
+/* Commont Banner Career */
+.commont-banner{
+  background-position: top center;
+  &:before{
+    background: rgba(0,0,0,0.2);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 36px;
+    font-weight: $MontserratExtraBold;
+    text-transform: uppercase;
+    @include tablet {
+      font-size: 42px;
+    }
+    @include wide-screen {
+      font-size: 50px;
+    }
+    @include mobi-only {
+      font-size: 34px;
+    }
+    @include breakpoint( 320px, 480px ) {
+      font-size: 22px;
+    }
+  }
+  p{
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+    font-size: 15px;
+  }
+}
+
+/* banner job */
+.banner-recent{
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 760px;
+  @include breakpoint-max($phablet-landscape) {
+    min-height: 375px;
+  }
+  &:before {
+    content: '';
+    height: 285px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    z-index: 1;
+    background: -moz-linear-gradient(top, rgba(51,39,53,0.01) 0%, rgba(51,39,53,0.06) 4%, rgba(51,39,53,0.15) 9%, rgba(51,39,53,0.27) 13%, rgba(51,39,53,0.6) 25%, rgba(51,39,53,0.82) 33%, rgba(51,39,53,0.94) 39%, rgba(51,39,53,1) 43%, rgba(51,39,53,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(51,39,53,0.01) 0%,rgba(51,39,53,0.06) 4%,rgba(51,39,53,0.15) 9%,rgba(51,39,53,0.27) 13%,rgba(51,39,53,0.6) 25%,rgba(51,39,53,0.82) 33%,rgba(51,39,53,0.94) 39%,rgba(51,39,53,1) 43%,rgba(51,39,53,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(51,39,53,0.01) 0%,rgba(51,39,53,0.06) 4%,rgba(51,39,53,0.15) 9%,rgba(51,39,53,0.27) 13%,rgba(51,39,53,0.6) 25%,rgba(51,39,53,0.82) 33%,rgba(51,39,53,0.94) 39%,rgba(51,39,53,1) 43%,rgba(51,39,53,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03332735', endColorstr='#332735',GradientType=0 ); /* IE6-9 */
+  }
+  .header_info{
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: $white;
+  }
+  .align-content{
+    text-align: center;
+  }
+  h1 {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    color: inherit;
+    font-weight: $MontserratSemiBold;
+  }
+  p.subtitle{
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratThin;
+    font-size: 24px;
+    line-height: 38px;
+    letter-spacing: 0.02em;
+    margin-bottom: 0;
+  }
+  @include tablet {
+    h1 { font-size: 24px;}
+    p.subtitle{
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+  @include wide-screen {
+    h1 {
+      font-size: 26px;
+      margin: 0;
+    }
+    p.subtitle{
+      font-size: 46px;
+      line-height: 71.4px;
+    }
+  }
+  .port-pager{
+    margin-top: 24px;
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      font-family: $MontserratFontFamily;
+      font-weight: $MontserratLight;
+      font-size: 12px;
+      line-height: 32.4px;
+      color: inherit;
+      padding: 0 10px;
+      text-transform: uppercase;
+      p{
+        color: inherit;
+        margin-bottom: 0;
+        padding: 8px 26px;
+        border: 1px solid $white;
+        @include breakpoint-max($phablet-landscape) {
+          padding: 4px 10px;
+        }
+        &:hover {
+          color: $black;
+          border-color: $white;
+          background: $white;
+        }
+      }
+    }
+    .fa {
+      font-size: 25px;
+      display: block;
+      line-height: inherit;
+    }
+  }
+}
+
+/* Banner Work */
+.info-banner{
+  &:before{
+    display: none;
+  }
+  .banner-inner{
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+  h3{
+    font-family: $ArvoFontFamily;
+    font-weight: $ArvoRegular;
+    text-transform: none;
+    font-size: 40px;
+    line-height: 60px;
+    letter-spacing: 0;
+    @include breakpoint-max($phablet-landscape) {
+      font-size: 30px;
+      line-height: 50px;
+    }
+  }
+}
+
+/* Banner case study detail */
+.banner-basic{
+  padding-top: 245px;
+  padding-bottom: 245px;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* Banner Home */
+.home-page-banner-content {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  &:before{
+    content:'';
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-indent: -9999px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    @include pixel-pattern-background(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+    @include background-size(3px 3px);
+    @extend %transition-all;
+  }
+  .banner-img {
+    z-index: 3;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  .youtube-video-full-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .okvideo_player{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .ytplayer-container{
+      position: absolute;
+      top: 0;
+      z-index: -1;
+    }
+  }
+}
+.banner-description-center {
+  font-family: $MontserratFontFamily;
+  font-weight: $MontserratLight;
+  &.loaded {
+    display: block;
+  }
+  .banner-intro {
+    text-transform: uppercase;
+    float: left;
+    width: 100%;
+    padding: 0 $gutter;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 50%;
+    @include translate(0, -50%);
+    text-align: center;
+    color: $white;
+    h1, h2, h3, h4, h5 {
+      color: $white;
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+    p {
+      font-size: 15px;
+      margin: 0;
+    }
+  }
+  .anchor-body {
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 42px;
+    text-align: center;
+    width: 100%;
+    z-index: 11;
+    p{
+      margin-bottom: 0;
+    }
+  }
+
+  @include tablet {
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratExtraLight;
+    .banner-intro {
+      h1, h2, h3, h4, h5 {
+        font-size: 30px;
+        margin: 0 0 12px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+  @include wide-screen {
+    .banner-intro {
+      h1, h2, h3, h4, h5 {
+        font-size: 46px
+      }
+      p {
+        font-size: 30px;
+      }
+    }
+  }
+}

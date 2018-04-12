@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i');
+/* ===========================================================
+IMPORT GLOBAL
+============================================================*/
+@import "global/mixin.scss";
+@import "global/media-queries.scss";
+@import "global/variables.scss";
+@import "global/button.scss";
+@import "global/osc-icon.scss";
+@import "global/reset.scss";
+@import "global/drupal.scss";
+@import "global/place-holder.scss";
+/* ===========================================================
+IMPORT TYPE
+============================================================*/
+@import "type/loader.scss";
+@import "type/box-icon.scss";
+@import "type/grid-mas.scss";
+@import "type/form.scss";
+/* ===========================================================
+IMPORT REGION
+============================================================*/
+@import "region/header.scss";
+@import "region/footer.scss";
+@import "region/sidebar.scss";
+@import "region/banner.scss";
+/* ===========================================================
+IMPORT PAGE
+============================================================*/
+@import "page/home.scss";
+@import "page/work.scss";
+@import "page/capabilities.scss";
+@import "page/capabilities_magento.scss";
+@import "page/capabilities_aem.scss";
+@import "page/capabilities_sitecore.scss";
+@import "page/capabilities_shopify.scss";
+@import "page/capabilities_kentico.scss";
+@import "page/case-study.scss";
+@import "page/news.scss";
+@import "page/about-us.scss";
+@import "page/contact.scss";
+@import "page/faq.scss";
+@import "page/careers.scss";
+@import "page/history.scss";
+@import "page/event.scss";
+/* ===========================================================
+GLOBAL
+============================================================*/
+
+.owl-carousel {
+	.owl-stage-outer {
+		@include clearfix;
+		display: block;
+	}
+	.owl-dots {
+		@include clearfix;
+		display: block;
+		position: relative;
+		text-align: center;
+		line-height: 1;
+		.owl-dot {
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 5px;
+			width: 12px;
+			height: 12px;
+			@include border-radius(50%);
+			text-indent: -9999px;
+			overflow: hidden;
+			@include box-rgba(0, 0, 0, 0.5, #000);
+			&.active {
+				background: #000;
+			}
+		}
+	}
+}
+
+/* Page Not Found */
+.page-not-found{
+	padding-top: 70px;
+	padding-bottom: 70px;
+	.page-inner{
+		text-align: center;
+	}
+	.not_found {
+		color: $blue;
+		font-weight: 700;
+		font-size: 200px;
+		@include breakpoint-max(480px) {
+			font-size: 100px;
+		}
+		line-height: 1;
+		margin: 20px 0 40px;
+	}
+	.title {
+		margin-bottom: 30px;
+		font-size: 30px;
+		letter-spacing: 0;
+		color: $grayFour;
+		font-family: $OpenSansFontFamily;
+		font-weight: $OpenSansRegular;
+	}
+	.content{
+		font-weight: $OpenSansLight;
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+	p.back-to {
+		font-size: 12px;
+		font-style: italic;
+		a{
+			font-weight: $OpenSansBold;
+		}
+	}
+}
+
+
+/* Region */
+//.style-section1 {
+//	background: #f7f6f6;
+//	border-top: 1px solid rgba(34, 34, 34, 0.25);
+//}
+
+//.section-content {
+//	padding: 0 0 30px;
+//}
+//.section-logoslider {
+//	padding: 30px 0;
+//}
+//.section-showcase {
+//	padding: 48px 0px 6px;
+//}
+//.section-callus {
+//	padding: 30px 0px;
+//}
+//.section-latest{
+//	padding: 20px 0px;
+//}
+
+//.section-content {
+//	.region-sidebar-first,
+//	.region-sidebar-second {
+//		margin-bottom: -30px;
+//		@include tablet { margin-bottom: 0; }
+//	}
+//}

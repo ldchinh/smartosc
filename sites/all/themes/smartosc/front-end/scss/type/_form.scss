@@ -1,0 +1,172 @@
+/* Form contact */
+.contact-form{
+  input[type='text'],
+  input[type='number'],
+  input[type='email'],
+  select,
+  textarea {
+    font-size: 13px;
+    background-color: $white;
+    border-width: 1px;
+  }
+  .form-item,.form-actions{
+    margin: 15px 0;
+  }
+  .form-submit{
+    border-width: 1px;
+  }
+  textarea {
+    height: auto;
+    min-height: 180px;
+  }
+  label,.grippie{
+    display: none;
+  }
+  @include mobi-only {
+    >div{
+      margin: 0 -#{$gutter};
+    }
+  }
+  @include breakpoint(560px, 767px) {
+    .group-left { width: 50%; float: left; padding-right: 7px; }
+    .group-right { width: 50%; float: right; padding-left: 8px; }
+  }
+}
+
+/* Form inline */
+.input-form-inline{
+  .button-submit{
+    position: relative;
+    padding-right: 5px;
+  }
+  .ajax-progress{
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    left: 100%;
+    .message{
+      display: none;
+    }
+  }
+  .form-item {
+    margin: 0 0 15px;
+    input.form-text {
+      width: 100%;
+      line-height: 18px;
+    }
+  }
+  .form-submit {
+    width: 160px;
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: $MontserratMedium;
+  }
+}
+
+/* Form News Letter insight */
+@include desktop {
+  .fixed-black-bottom.has_fixed{
+    position: fixed;
+    bottom: 0;
+  }
+}
+.fixed-black-bottom{
+  position: absolute;
+  padding: 10px 20px;
+  z-index: 10;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  background: $grayTwo;
+
+  .fixed-close{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    @include rotate(-45deg);
+    @include desktop {
+      top: 50%;
+      @include transform(translate(0,-50%) rotate(-45deg));
+    }
+    @include border-radius(50%);
+    border: 1px solid white;
+    line-height: 0.6;
+    padding: 5px;
+    color: white;
+    font-size: 30px;
+  }
+}
+
+.newsletter_messages{
+  color: white;
+  font-size: 16px;
+}
+.news-letter-dotmailer{
+  max-width: 1170px;
+  margin: 0 auto;
+  text-align: center;
+  .alert{
+    margin-top: 0;
+  }
+  .ajax-progress .throbber{
+    background-image: url("img/ajax-loading-d.gif");
+  }
+  .title-dotmailer h4{
+    font-size: 16px;
+    padding: 0;
+    color: $white;
+    text-align: center;
+    line-height: 1.8;
+    text-transform: capitalize;
+    letter-spacing: 0.08em;
+    margin: 10px 35px;
+  }
+  .form-dotmailer{
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  @include tablet {
+    .title-dotmailer,
+    .form-dotmailer{
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .title-dotmailer h4{
+      text-align: left;
+      margin-right: 0;
+      margin-left: 0;
+    }
+    .form-dotmailer {
+      .form-item,
+      .button-submit {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .form-item {
+        width: 220px;
+        margin: 0 22px 0 0;
+      }
+    }
+  }
+  @include wide-screen {
+    .title-dotmailer h4{
+      font-size: 15px;
+    }
+    .form-dotmailer .form-item {
+        width: 270px;
+    }
+  }
+  @include desktop-medium{
+    .title-dotmailer h4{
+      font-size: 13px;
+    }
+    .form-dotmailer .form-item {
+      width: 210px;
+    }
+  }
+}

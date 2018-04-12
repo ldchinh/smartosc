@@ -1,0 +1,250 @@
+
+/* icon home */
+// for block 4,5,6,82
+//<div class="text-center icon-top">
+//  <div class="content sh-block-content">
+//    <p><span class="rounded-corner"><span class="osc-icon-message">&nbsp;</span></span></p>
+//    <h3 style="padding-top: 0px; padding-bottom: 0px;">STRATEGY &amp; CONSULTANCY</h3>
+//    <p>We can help with defining your online business requirements and guide you throughout the execution.</p>
+//  </div>
+//</div>
+
+//.icon-top {
+//  margin: 0 0 30px;
+//  h3 {
+//    font-size: 16px;
+//    color: $black;
+//    padding: 0;
+//    margin: 0 0 10px;
+//  }
+//  p {
+//    margin: 0;
+//  }
+//  [class^="fa fa-"],
+//  [class*="fa fa-"] {
+//    margin: 0 auto 35px;
+//  }
+//  .rounded-corner {
+//    @extend %icon-rounded-corner;
+//    margin: 0 auto 15px;
+//  }
+//  &:hover {
+//    [class^="fa fa-"],
+//    [class*="fa fa-"] {
+//      &:after {
+//        background: #000;
+//      }
+//    }
+//    .rounded-corner {
+//      @extend %icon-rounded-corner-hover;
+//    }
+//  }
+//
+//  @include tablet {
+//    margin: 0 0 45px;
+//  }
+//
+//  @include wide-screen {
+//    margin: 0 0 66px;
+//    h3 {
+//      margin: 0 0 20px;
+//    }
+//    .rounded-corner {
+//      margin: 0 auto 35px;
+//    }
+//  }
+//}
+
+/* icon about */
+.about_intro {
+  margin: 20px 0 0;
+  color: #4c5357;
+  .description {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+  .group-intro {
+    text-align: center;
+    .title {
+      display: block;
+    }
+    .img-group {
+      text-align: center;
+      margin: 0 0 18px;
+    }
+    .rounded-corner {
+      @extend %icon-rounded-corner;
+      width: 125px;
+      [class*="osc-icon-"],
+      [class^="osc-icon-"] {
+        width: 125px;
+        height: 125px;
+        line-height: 125px;
+        font-size: 45px;
+        &:before,
+        &:after {
+          line-height: 125px;
+          height: 125px;
+          width: 100%;
+        }
+      }
+    }
+    h5 {
+      font-size: 18px;
+      margin: 0 0 18px;
+    }
+    p {
+      margin: 0;
+    }
+    .group-left,
+    .group-right {
+      margin: 0 0 40px;
+    }
+  }
+
+  @include tablet {
+    margin: 45px 0 30px;
+    .description {
+      line-height: 1.8;
+      margin: 0 0 80px;
+      padding: 0 50px;
+    }
+    .group-intro {
+      .img-group {
+        position: absolute;
+        top: -20px;
+        margin: 0;
+      }
+      .group-left {
+        text-align: right;
+        padding: 0 180px 0 30px;
+        margin: 0;
+        .img-group {
+          right: 30px;
+        }
+      }
+      .group-right {
+        text-align: left;
+        padding: 0 30px 0 180px;
+        margin: 0;
+        .img-group {
+          left: 30px;
+        }
+      }
+    }
+  }
+  @include desktop {
+    margin: 65px 0 65px;
+    .description {
+      padding: 0 130px;
+    }
+    .group-intro {
+      .group-left {
+        padding: 0 215px 0 100px;
+        .img-group {
+          right: 60px;
+        }
+      }
+      .group-right {
+        padding: 0 100px 0 215px;
+        .img-group {
+          left: 60px;
+        }
+      }
+    }
+  }
+}
+
+/* icon careers */
+.icon-box{
+  padding-left: 60px;
+  position: relative;
+  .icon{
+    left: 0;
+    top: 0;
+    position: absolute;
+    span{
+      font-size: 34px;
+    }
+  }
+}
+
+
+/* Box percent */
+.rounded-box{
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  border: 1px solid $blueSix;
+  @include border-radius(50%);
+  position: relative;
+  &:before {
+    @include border-radius(50%);
+    border: 3px solid $blueSix;
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+  }
+
+  .rounded-content{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    left: 0;
+    top: 50%;
+    @include translate(0, -50%);
+  }
+
+  h4{
+    font-size: 30px;
+    color: $blueSix;
+  }
+  p{
+    font-size: 16px;
+    color: $blueSix;
+    margin-bottom: 0;
+  }
+}
+
+/* Box dotted */
+.middle-content{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  left: 0;
+  top: 50%;
+  @include translate(0, -50%);
+}
+.round-dotted{
+  width: 254px;
+  height: 254px;
+  display: inline-block;
+  border: 2px dashed $blackFive;
+  @include border-radius(50%);
+  position: relative;
+
+  .number{
+    font-size: 28px;
+    line-height: 54px;
+    letter-spacing: 0.02em;
+    color: inherit;
+    text-transform: uppercase;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratBold;
+  }
+  .info{
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: inherit;
+    font-family: $MontserratFontFamily;
+    font-weight: $MontserratLight;
+  }
+}

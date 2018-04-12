@@ -1,0 +1,34 @@
+# Ignore paths that contain user-generated content.
+sites/default/
+sites/all/themes/smartosc/front-end/.sass-cache
+
+# Ignore everything but the "sites" folder ( for non core developer )
+.idea/
+/Backup_Live
+/cache
+/tmp
+/includes
+/misc
+/modules
+/scripts
+/themes
+.htaccess
+authorize.php
+cron.php
+index.php
+install.php
+update.php
+web.config
+xmlrpc.php
+
+CHANGELOG.txt
+COPYRIGHT.txt
+INSTALL.mysql.txt
+INSTALL.pgsql.txt
+INSTALL.sqlite.txt
+INSTALL.txt
+LICENSE.txt
+MAINTAINERS.txt
+README.txt
+robots.txt
+UPGRADE.txt
